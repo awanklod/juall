@@ -1,7 +1,7 @@
 #!/bin/bash
-# Token SatanFusionOfficial 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
-    TOKEN="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"
-    git clone https://github.com/SatanFusionOfficial/permission /root/ipvps/ &> /dev/null
+# Token awanklod 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
+    TOKEN="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"
+    git clone https://github.com/awanklod/izin_jual /root/ipvps/ &> /dev/null
     clear
     echo ""
     echo -e "${g}         LIST IP VPS          $NC"
@@ -17,15 +17,15 @@
     sed -i "/^### $name $exp $ipdel/,/^},{/d" /root/ipvps/ip
     fi
     cd /root/ipvps
-    git config --global user.email "sfvpnteam752@gmail.com" &> /dev/null
-    git config --global user.name "SatanFusionOfficial" &> /dev/null
+    git config --global user.email "awimbara@gmail.com" &> /dev/null
+    git config --global user.name "awanklod" &> /dev/null
     rm -rf .git &> /dev/null
     git init &> /dev/null
     git add . &> /dev/null
     git commit -m register &> /dev/null
     git branch -M main &> /dev/null
-    git remote add origin https://github.com/SatanFusionOfficial/permission
-    git push -f https://${TOKEN}@github.com/SatanFusionOfficial/permission.git &> /dev/null
+    git remote add origin https://github.com/awanklod/izin_jual
+    git push -f https://${TOKEN}@github.com/awanklod/permission.git &> /dev/null
     rm -rf /root/ipvps
     clear
     sleep 1
