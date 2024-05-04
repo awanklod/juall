@@ -44,7 +44,7 @@ echo -e "$COLOR1╭════════════════════�
 echo -e "$COLOR1│ ${NC} ${WH} [INFO] Kamu Bukan Reseller                 $COLOR1"
 echo -e "$COLOR1╰═══════════════════════════════════════════════════╯${NC}"
 echo -e "$COLOR1╭═══════════════════════════════════════════════════╮${NC}"
-echo -e "$COLOR1│ ${NC}             ${WH} Satan Fusion Tunneling${NC}              $COLOR1│$NC"
+echo -e "$COLOR1│ ${NC}             ${WH} CLOUDVPN Tunneling${NC}              $COLOR1│$NC"
 echo -e "$COLOR1╰═══════════════════════════════════════════════════╯${NC}"
 echo -e ""
 exit
@@ -75,7 +75,7 @@ echo -e "$COLOR1╭════════════════════�
 echo -e "$COLOR1│ ${NC} ${WH} [INFO] Kamu Bukan Super Admin                 $COLOR1"
 echo -e "$COLOR1╰═══════════════════════════════════════════════════╯${NC}"
 echo -e "$COLOR1╭═══════════════════════════════════════════════════╮${NC}"
-echo -e "$COLOR1│ ${NC}             ${WH} Satan Fusion Tunneling${NC}              $COLOR1│$NC"
+echo -e "$COLOR1│ ${NC}             ${WH} CLOUDVPN Tunneling${NC}              $COLOR1│$NC"
 echo -e "$COLOR1╰═══════════════════════════════════════════════════╯${NC}"
 echo -e ""
 read -n 1 -s -r -p "   Press any key to back on menu"
@@ -90,7 +90,7 @@ mkdir /root/rmbl
 cd /root/casper/ &> /dev/null
 rm -rf .git &> /dev/null
 git init &> /dev/null
-wget https://raw.githubusercontent.com/${USERGIT}/permission/main/ip &> /dev/null
+wget https://raw.githubusercontent.com/${USERGIT}/izin_jual/main/ip &> /dev/null
 
 data=( `cat /root/rmbl/ip | grep '^###' | cut -d ' ' -f 2 | sort | uniq`);
 now=`date +"%Y-%m-%d"`
@@ -110,8 +110,8 @@ done
 git add ip &> /dev/null
 git commit -m remove &> /dev/null
 git branch -M main &> /dev/null
-git remote add origin https://github.com/${USERGIT}/permission.git &> /dev/null
-git push -f https://${APIGIT}@github.com/${USERGIT}/permission.git &> /dev/null
+git remote add origin https://github.com/${USERGIT}/izin_jual.git &> /dev/null
+git push -f https://${APIGIT}@github.com/${USERGIT}/izin_jual.git &> /dev/null
 else
 echo -e "$COLOR1╭═══════════════════════════════════════════════════╮${NC}"
 echo -e "$COLOR1│ ${NC}${COLBG1}            ${WH} KAMU BUKAN SUPER ADMIN              ${NC}$COLOR1 │$NC"
@@ -120,7 +120,7 @@ echo -e "$COLOR1╭════════════════════�
 echo -e "$COLOR1│ ${NC} ${WH} [INFO] Kamu Bukan Super Admin                 $COLOR1"
 echo -e "$COLOR1╰═══════════════════════════════════════════════════╯${NC}"
 echo -e "$COLOR1╭═══════════════════════════════════════════════════╮${NC}"
-echo -e "$COLOR1│ ${NC}             ${WH} Satan Fusion Tunneling${NC}              $COLOR1│$NC"
+echo -e "$COLOR1│ ${NC}             ${WH} CLOUDVPN Tunneling${NC}              $COLOR1│$NC"
 echo -e "$COLOR1╰═══════════════════════════════════════════════════╯${NC}"
 echo -e ""
 read -n 1 -s -r -p "   Press any key to back on menu"
@@ -148,12 +148,12 @@ read -p "   MASUKKAN IPNYA: " daftar
 echo -e "$COLOR1 ${NC}"
 echo -e "$COLOR1 ${NC}  [INFO] Checking the IPVPS!"
 sleep 1
-REQIP=$(curl -sS https://raw.githubusercontent.com/${USERGIT}/permission/main/ip | awk '{print $4}' | grep $daftar)
+REQIP=$(curl -sS https://raw.githubusercontent.com/${USERGIT}/izin_jual/main/ip | awk '{print $4}' | grep $daftar)
 if [[ $daftar = $REQIP ]]; then
 echo -e "$COLOR1 ${NC}  [INFO] VPS IP Already Registered!!"
 echo -e "$COLOR1╰═══════════════════════════════════════════════════╯${NC}"
 echo -e "$COLOR1╭═══════════════════════════════════════════════════╮${NC}"
-echo -e "$COLOR1 ${NC}                ${WH} Satan Fusion Tunneling${NC}                 $COLOR1 $NC"
+echo -e "$COLOR1 ${NC}                ${WH} CLOUDVPN Tunneling${NC}                 $COLOR1 $NC"
 echo -e "$COLOR1╰═══════════════════════════════════════════════════╯${NC}"
 echo -e ""
 cd
@@ -179,7 +179,7 @@ cd
 echo -e "$COLOR1 ${NC}  [INFO] Please Input client"
 echo -e "$COLOR1╰═══════════════════════════════════════════════════╯${NC}"
 echo -e "$COLOR1╭═══════════════════════════════════════════════════╮${NC}"
-echo -e "$COLOR1 ${NC}                ${WH} Satan Fusion Tunneling${NC}                 $COLOR1 $NC"
+echo -e "$COLOR1 ${NC}                ${WH} CLOUDVPN Tunneling${NC}                 $COLOR1 $NC"
 echo -e "$COLOR1╰═══════════════════════════════════════════════════╯${NC}"
 echo -e ""
 read -n 1 -s -r -p "   Press any key to back on menu"
@@ -198,7 +198,7 @@ if [ -z $hari ]; then
 echo -e "$COLOR1 ${NC}   [INFO] Please Input exp date"
 echo -e "$COLOR1╰═══════════════════════════════════════════════════╯${NC}"
 echo -e "$COLOR1╭═══════════════════════════════════════════════════╮${NC}"
-echo -e "$COLOR1 ${NC}                ${WH} Satan Fusion Tunneling${NC}                 $COLOR1 $NC"
+echo -e "$COLOR1 ${NC}                ${WH} CLOUDVPN Tunneling${NC}                 $COLOR1 $NC"
 echo -e "$COLOR1╰═══════════════════════════════════════════════════╯${NC}"
 echo -e ""
 read -n 1 -s -r -p "   Press any key to back on menu"
@@ -242,7 +242,7 @@ mkdir /root/rmbl
 cd /root/casper/ &> /dev/null
 rm -rf .git &> /dev/null
 git init &> /dev/null
-wget https://raw.githubusercontent.com/${USERGIT}/permission/main/ip &> /dev/null
+wget https://raw.githubusercontent.com/${USERGIT}/izin_jual/main/ip &> /dev/null
 ws=1
 regip2=$(expr "$U6" - "$ws")
 sed -i "s/### $U2 $U3 $U4 $U5 $U6/### $U2 $U3 $U4 $U5 $regip2/g" ip
@@ -254,8 +254,8 @@ fi
 git add ip
 git commit -m register &> /dev/null
 git branch -M main &> /dev/null
-git remote add origin https://github.com/${USERGIT}/permission &> /dev/null
-git push -f https://${APIGIT}@github.com/${USERGIT}/permission &> /dev/null
+git remote add origin https://github.com/${USERGIT}/izin_jual &> /dev/null
+git push -f https://${APIGIT}@github.com/${USERGIT}/izin_jual &> /dev/null
 sleep 1
 d1=$(date -d "$exp" +%s)
 d2=$(date -d "$hariini" +%s)
@@ -288,7 +288,7 @@ TEXT="
 <b>Succes Create this IP</b>
 <code>◇━━━━━━━━━━━━━━◇</code>
 <i>Tunggu 5Menit Untuk Server KeRefresh</i>
-<b><i>Terima Kasih Sudah Menggunakan Credits By Satan Fusion</i></b>
+<b><i>Terima Kasih Sudah Menggunakan Credits By CLOUDVPN</i></b>
 "
 
 curl -s --max-time $TIMES -d "chat_id=$CHATID&disable_web_page_preview=1&text=$TEXT&parse_mode=html" $URL >/dev/null
@@ -296,7 +296,7 @@ cd
 rm -rf /root/rmbl >/dev/null 
 echo -e "$COLOR1╰═══════════════════════════════════════════════════╯${NC}"
 echo -e "$COLOR1╭═══════════════════════════════════════════════════╮${NC}"
-echo -e "$COLOR1 ${NC}                ${WH} Satan Fusion Tunneling${NC}                 $COLOR1 $NC"
+echo -e "$COLOR1 ${NC}                ${WH} CLOUDVPN Tunneling${NC}                 $COLOR1 $NC"
 echo -e "$COLOR1╰═══════════════════════════════════════════════════╯${NC}"
 echo ""
 read -n 1 -s -r -p "   Press any key to back on menu"
@@ -331,7 +331,7 @@ echo -e "$COLOR1 ${NC}   ROLE   : $job"
 echo -e "$COLOR1 ${NC}   SISA IP : $ip"
 echo -e "$COLOR1╰═══════════════════════════════════════════════════╯${NC}"
 echo -e "$COLOR1╭═══════════════════════════════════════════════════╮${NC}"
-echo -e "$COLOR1 ${NC}                ${WH} Satan Fusion Tunneling${NC}                 $COLOR1 $NC"
+echo -e "$COLOR1 ${NC}                ${WH} CLOUDVPN Tunneling${NC}                 $COLOR1 $NC"
 echo -e "$COLOR1╰═══════════════════════════════════════════════════╯${NC}"
 echo -e ""
 read -n 1 -s -r -p "   Press any key to back on menu"
@@ -408,15 +408,15 @@ mkdir /root/rmbl
 cd /root/rmbl/ &> /dev/null
 rm -rf .git &> /dev/null
 git init &> /dev/null
-wget https://raw.githubusercontent.com/${USERGIT}/permission/main/ip &> /dev/null
+wget https://raw.githubusercontent.com/${USERGIT}/izin_jual/main/ip &> /dev/null
 ws=1
 regip2=$(expr "$U6" - "$ws")
 sed -i "s/### $U2 $U3 $U4 $U5 $U6/### $U2 $U3 $U4 $U5 $regip2/g" ip
 git add ip
 git commit -m register &> /dev/null
 git branch -M main &> /dev/null
-git remote add origin https://github.com/${USERGIT}/permission &> /dev/null
-git push -f https://${APIGIT}@github.com/${USERGIT}/permission &> /dev/null
+git remote add origin https://github.com/${USERGIT}/izin_jual &> /dev/null
+git push -f https://${APIGIT}@github.com/${USERGIT}/izin_jual &> /dev/null
 sleep 0.5
 rm ip
 wget https://raw.githubusercontent.com/${USERGIT}/license/main/key &> /dev/null
@@ -472,5 +472,5 @@ TEXT="
 <b>Succes Create This Key</b>
 <code>◇━━━━━━━━━━━━━━◇</code>
 <i>Tunggu 5Menit Untuk Server KeRefresh</i>
-<b><i>Terima Kasih Sudah Menggunakan Credits By Satan Fusion</i></b>
-"'&reply_markup={"inline_keyboard":[[{"text":"CHANNEL","url":"https://t.me/satanofficiall"},{"text":"ORDER AUTOSCRIPT","
+<b><i>Terima Kasih Sudah Menggunakan Credits By CLOUDVPN</i></b>
+"'&reply_markup={"inline_keyboard":[[{"text":"CHANNEL","url":"https://t.me/amiqyu"},{"text":"ORDER AUTOSCRIPT","
