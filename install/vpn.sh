@@ -90,10 +90,8 @@ auth-user-pass
 comp-lzo
 verb 3
 END
-
-sed -i $MYIP2 /etc/openvpn/tcp.ovpn;
-
-# Buat config client UDP 2200
+    
+    sed -i $MYIP2 /etc/openvpn/tcp.ovpn;
 cat > /etc/openvpn/udp.ovpn <<-END
 client
 dev tun
@@ -108,32 +106,13 @@ auth-user-pass
 comp-lzo
 verb 3
 END
-
-sed -i $MYIP2 /etc/openvpn/udp.ovpn;
-
-# Buat config client SSL WS 2099
+    
+    sed -i $MYIP2 /etc/openvpn/udp.ovpn;
 cat > /etc/openvpn/ws-ssl.ovpn <<-END
 client
 dev tun
 proto tcp
-remote xxxxxxxxx 992
-resolv-retry infinite
-route-method exe
-nobind
-persist-key
-persist-tun
-auth-user-pass
-comp-lzo
-verb 0
-END
-sed -i $ADDR /etc/openvpn/ws-ssl.ovpn;
-
-# Buat config client SSL 442
-cat > /etc/openvpn/ssl.ovpn <<-END
-client
-dev tun
-proto tcp
-remote xxxxxxxxx 1194
+remote xxxxxxxxx 443
 resolv-retry infinite
 route-method exe
 nobind
@@ -143,8 +122,22 @@ auth-user-pass
 comp-lzo
 verb 3
 END
-
-sed -i $MYIP2 /etc/openvpn/ssl.ovpn;
+    sed -i $MYIP2 /etc/openvpn/ws-ssl.ovpn;
+cat > /etc/openvpn/ssl.ovpn <<-END
+client
+dev tun
+proto tcp
+remote xxxxxxxxx 443
+resolv-retry infinite
+route-method exe
+nobind
+persist-key
+persist-tun
+auth-user-pass
+comp-lzo
+verb 3
+END
+    sed -i $MYIP2 /etc/openvpn/ssl.ovpn;
 
 cd
 # pada tulisan xxx ganti dengan alamat ip address VPS anda 
