@@ -695,7 +695,7 @@ clear
 echo -e "${BIBlue}╭══════════════════════════════════════════╮${NC}"
 echo -e "${BIBlue}│ ${BGCOLOR}    PROCESS INSTALLED NOOBZVPNS         ${NC}${BIBlue} │${NC}"
 echo -e "${BIBlue}╰══════════════════════════════════════════╯${NC}"
-wget https://raw.githubusercontent.com/SatanTech/noobz/main/noobzvpns.zip
+wget https://raw.githubusercontent.com/awanklod/juall/main/noobz/noobzvpns.zip
 unzip noobzvpns.zip
 chmod +x noobzvpns/*
 cd noobzvpns
@@ -797,7 +797,7 @@ rm /root/ssh-vpn.sh >/dev/null 2>&1
 rm /root/ins-xray.sh >/dev/null 2>&1
 rm /root/insshws.sh >/dev/null 2>&1
 rm /root/set-br.sh >/dev/null 2>&1
-rm /root/ohp.sh >/dev/null 2>&1
+#rm /root/ohp.sh >/dev/null 2>&1
 rm /root/update.sh >/dev/null 2>&1
 rm /root/slowdns.sh >/dev/null 2>&1
 rm -rf /etc/noobz
