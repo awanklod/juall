@@ -198,7 +198,7 @@ apt -y install squid3
 
 # install squid for debian 11
 apt -y install squid
-wget -O /etc/squid/squid.conf "https://raw.githubusercontent.com/RMBL-VPN/v/install/main/squid3.conf"
+wget -O /etc/squid/squid.conf "https://raw.githubusercontent.com/awanklod/juall/main/install/squid3.conf"
 sed -i $MYIP2 /etc/squid/squid.conf
 
 # setting vnstat
@@ -228,20 +228,36 @@ socket = a:SO_REUSEADDR=1
 socket = l:TCP_NODELAY=1
 socket = r:TCP_NODELAY=1
 
+#[dropbear]
+#accept = 222
+#connect = 127.0.0.1:22
+
+#[dropbear]
+#accept = 777
+#connect = 127.0.0.1:109
+
+#[ws-stunnel]
+#accept = 2096
+#connect = 700
+
+#[openvpn]
+#accept = 442
+#connect = 127.0.0.1:1194
+
 [dropbear]
-accept = 222
+accept = 8880
 connect = 127.0.0.1:22
 
 [dropbear]
-accept = 777
+accept = 8443
 connect = 127.0.0.1:109
 
 [ws-stunnel]
-accept = 2096
+accept = 444
 connect = 700
 
 [openvpn]
-accept = 442
+accept = 990
 connect = 127.0.0.1:1194
 
 END
