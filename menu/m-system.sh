@@ -364,18 +364,18 @@ echo "10 $wkt3 1 * * root /usr/local/bin/reboot_otomatis" > /etc/cron.d/reboot_o
 echo "Auto-Reboot has been successfully set once a month."
 sleep 2
 menu
-elif test $x -eq 7; then
-cat> /etc/cron.d/autocpu << END
-SHELL=/bin/sh
-PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
-*/7 * * * * root /usr/bin/autocpu
-END
-echo "Auto-Reboot CPU 100% TURN ON."
-sleep 2
-menu
+#elif test $x -eq 7; then
+#cat> /etc/cron.d/autocpu << END
+#SHELL=/bin/sh
+#PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+#*/7 * * * * root /usr/bin/autocpu
+#END
+#echo "Auto-Reboot CPU 100% TURN ON."
+#sleep 2
+#menu
 elif test $x -eq 8; then
 rm -f /etc/cron.d/reboot_otomatis
-rm -f /etc/cron.d/autocpu
+#rm -f /etc/cron.d/autocpu
 echo "Auto-Reboot successfully TURNED OFF."
 sleep 2
 menu
