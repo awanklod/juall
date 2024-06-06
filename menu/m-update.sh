@@ -87,7 +87,7 @@ rm -rf trialvmess
 rm -rf trialvless
 rm -rf trialtrojan
 rm -rf trialssh
-rm -rf autocpu
+#rm -rf autocpu
 rm -rf bantwidth
 
 
