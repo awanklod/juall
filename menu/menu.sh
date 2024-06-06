@@ -351,16 +351,16 @@ d1=$(date -d "$1" +%s)
 d2=$(date -d "$2" +%s)
 echo -e "$COLOR1 $NC Expiry In   : $(( (d1 - d2) / 86400 )) Days"
 }
-function new(){
-cat> /etc/cron.d/autocpu << END
-SHELL=/bin/sh
-PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+#function new(){
+#cat> /etc/cron.d/autocpu << END
+#SHELL=/bin/sh
+##PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 */3 * * * * root /usr/bin/autocpu
-END
-echo "Auto-Reboot CPU 100% TURN ON."
-sleep 1
-menu
-}
+#END
+#echo "Auto-Reboot CPU 100% TURN ON."
+#sleep 1
+#menu
+#}
 function newx(){
 clear
 until [[ $usagee =~ ^[0-9]+$ ]]; do
@@ -472,7 +472,7 @@ case $opt in
 22 | 22) clear ; running;;
 23 | 23) clear ; restartservice ;;
 89 | 89) clear ; bannner ;;
-88 | 88) clear ; new ;;
+#88 | 88) clear ; new ;;
 77 | 77) clear ; newx ;;
 99 | 99) clear ; passwd ;;
 100) clear ; $up2u ;;
