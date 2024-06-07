@@ -108,26 +108,26 @@ verb 3
 END
     
     sed -i $MYIP2 /etc/openvpn/udp.ovpn;
-cat > /etc/openvpn/ws-ssl.ovpn <<-END
-client
-dev tun
-proto tcp
-remote xxxxxxxxx 443
-resolv-retry infinite
-route-method exe
-nobind
-persist-key
-persist-tun
-auth-user-pass
-comp-lzo
-verb 3
-END
-    sed -i $MYIP2 /etc/openvpn/ws-ssl.ovpn;
+#cat > /etc/openvpn/ws-ssl.ovpn <<-END
+#client
+#dev tun
+#proto tcp
+#remote xxxxxxxxx 443
+#resolv-retry infinite
+#route-method exe
+#nobind
+#persist-key
+#persist-tun
+#auth-user-pass
+#comp-lzo
+#verb 3
+#END
+#    sed -i $MYIP2 /etc/openvpn/ws-ssl.ovpn;
 cat > /etc/openvpn/ssl.ovpn <<-END
 client
 dev tun
 proto tcp
-remote xxxxxxxxx 443
+remote xxxxxxxxx 442
 resolv-retry infinite
 route-method exe
 nobind
@@ -160,12 +160,12 @@ echo '</ca>' >> /etc/openvpn/udp.ovpn
 cp /etc/openvpn/udp.ovpn /home/vps/public_html/udp.ovpn
 
 # masukkan certificatenya ke dalam config client SSL WS 443
-echo '<ca>' >> /etc/openvpn/ws-ssl.ovpn
-cat /etc/openvpn/server/ca.crt >> /etc/openvpn/ws-ssl.ovpn
-echo '</ca>' >> /etc/openvpn/ws-ssl.ovpn
+#echo '<ca>' >> /etc/openvpn/ws-ssl.ovpn
+#cat /etc/openvpn/server/ca.crt >> /etc/openvpn/ws-ssl.ovpn
+#echo '</ca>' >> /etc/openvpn/ws-ssl.ovpn
 
 # Copy config OpenVPN client ke home directory root agar mudah didownload ( WS 2099 )
-cp /etc/openvpn/ws-ssl.ovpn //home/vps/public_html/ws-ssl.ovpn
+#cp /etc/openvpn/ws-ssl.ovpn //home/vps/public_html/ws-ssl.ovpn
 
 # masukkan certificatenya ke dalam config client SSL
 echo '<ca>' >> /etc/openvpn/ssl.ovpn
