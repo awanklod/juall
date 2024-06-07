@@ -280,7 +280,7 @@ wget https://raw.githubusercontent.com/awanklod/juall/main/install/lolcat.sh && 
 
 # memory swap 1gb
 cd
-dd if=/dev/zero of=/swapfile bs=1024 count=1048576
+dd if=/dev/zero of=/swapfile bs=1024 count=524288
 mkswap /swapfile
 chown root:root /swapfile
 chmod 0600 /swapfile >/dev/null 2>&1
