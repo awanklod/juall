@@ -127,7 +127,7 @@ cat > /etc/openvpn/ssl.ovpn <<-END
 client
 dev tun
 proto tcp
-remote xxxxxxxxx 442
+remote xxxxxxxxx 990
 resolv-retry infinite
 route-method exe
 nobind
@@ -172,7 +172,7 @@ echo '<ca>' >> /etc/openvpn/ssl.ovpn
 cat /etc/openvpn/server/ca.crt >> /etc/openvpn/ssl.ovpn
 echo '</ca>' >> /etc/openvpn/ssl.ovpn
 
-# Copy config OpenVPN client ke home directory root agar mudah didownload ( SSL 442 )
+# Copy config OpenVPN client ke home directory root agar mudah didownload ( SSL 990 )
 cp /etc/openvpn/ssl.ovpn /home/vps/public_html/ssl.ovpn
 
 #firewall untuk memperbolehkan akses UDP dan akses jalur TCP
