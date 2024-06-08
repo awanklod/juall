@@ -28,20 +28,21 @@ exit
 fi
 }
 checking_sc
-#function ins-helium(){
-#clear
-#if [[ -e /usr/bin/helium ]]; then
-#helium
-#else
-#echo -ne
-#if [[ $(cat /etc/os-release | grep -w ID | head -n1 | sed 's/=//g' | sed 's/"//g' | sed 's/ID//g') == "ubuntu" ]]; then
-#echo -e " OS UBUNTU GA BISA INSTALL MENU INI"
-#read -n 1 -s -r -p "  Press any key to Back"
-#menu
-#else
-#wget -q -O /usr/bin/helium "https://cdn.discordapp.com/attachments/1043809011474112566/1054014513428566016/helium.sh" && chmod +x /usr/bin/helium && helium
-#fi
-#}
+function ins-helium(){
+clear
+if [[ -e /usr/bin/helium ]]; then
+helium
+else
+echo -ne
+if [[ $(cat /etc/os-release | grep -w ID | head -n1 | sed 's/=//g' | sed 's/"//g' | sed 's/ID//g') == "ubuntu" ]]; then
+echo -e " OS UBUNTU GA BISA INSTALL MENU INI"
+read -n 1 -s -r -p "  Press any key to Back"
+menu
+else
+wget -q -O /usr/bin/helium "https://cdn.discordapp.com/attachments/1043809011474112566/1054014513428566016/helium.sh" && chmod +x /usr/bin/helium && helium
+fi
+fi
+}
 function add-host(){
 fun_bar() {
 CMD[0]="$1"
@@ -316,7 +317,7 @@ echo -e "[\e[36m•3\e[0m] Set Auto-Reboot Setiap 12 Jam"
 echo -e "[\e[36m•4\e[0m] Set Auto-Reboot Setiap 1 Hari"
 echo -e "[\e[36m•5\e[0m] Set Auto-Reboot Setiap 1 Minggu"
 echo -e "[\e[36m•6\e[0m] Set Auto-Reboot Setiap 1 Bulan"
-#echo -e "[\e[36m•7\e[0m] Set Auto-Rebooot CPU 100%"
+echo -e "[\e[36m•7\e[0m] Set Auto-Rebooot CPU 100%"
 echo -e "[\e[36m•8\e[0m] Matikan Auto-Reboot & Auto-Reboot CPU 100%"
 echo -e "[\e[36m•9\e[0m] View reboot log"
 echo -e "[\e[36m•10\e[0m] Remove reboot log"
@@ -364,18 +365,18 @@ echo "10 $wkt3 1 * * root /usr/local/bin/reboot_otomatis" > /etc/cron.d/reboot_o
 echo "Auto-Reboot has been successfully set once a month."
 sleep 2
 menu
-#elif test $x -eq 7; then
-#cat> /etc/cron.d/autocpu << END
-#SHELL=/bin/sh
-#PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
-#*/7 * * * * root /usr/bin/autocpu
-#END
-#echo "Auto-Reboot CPU 100% TURN ON."
-#sleep 2
-#menu
+elif test $x -eq 7; then
+cat> /etc/cron.d/autocpu << END
+SHELL=/bin/sh
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+*/7 * * * * root /usr/bin/autocpu
+END
+echo "Auto-Reboot CPU 100% TURN ON."
+sleep 2
+menu
 elif test $x -eq 8; then
 rm -f /etc/cron.d/reboot_otomatis
-#rm -f /etc/cron.d/autocpu
+rm -f /etc/cron.d/autocpu
 echo "Auto-Reboot successfully TURNED OFF."
 sleep 2
 menu
@@ -868,18 +869,18 @@ sleep 2
 m-webmin
 fi
 }
-#function speed(){
-#cd
-#if [[ -e /etc/speedi ]]; then
-#speedtest
-#else
-#sudo apt-get install curl
-#curl -s https://packagecloud.io/install/repositories/ookla/speedtest-cli/script.deb.sh | sudo bash
-#sudo apt-get install speedtest
-#touch /etc/speedi
-#speedtest
-#fi
-#}
+function speed(){
+cd
+if [[ -e /etc/speedi ]]; then
+speedtest
+else
+sudo apt-get install curl
+curl -s https://packagecloud.io/install/repositories/ookla/speedtest-cli/script.deb.sh | sudo bash
+sudo apt-get install speedtest
+touch /etc/speedi
+speedtest
+fi
+}
 function gotopp(){
 cd
 if [[ -e /usr/bin/gotop ]]; then
@@ -1031,12 +1032,12 @@ fi
 read -n 1 -s -r -p "Press any key to back on menu"
 menu
 }
-#function speed2(){
-#apt install -y neofecth >/dev/null
-#clear
-#neofetch
-#speedtest
-#}
+function speed2(){
+apt install -y neofecth >/dev/null
+clear
+neofetch
+speedtest
+}
 function nameauthor(){
 read -rp "Input Your New Name : " -e name
 echo "$name" > /etc/profil
