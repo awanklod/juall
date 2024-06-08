@@ -666,11 +666,11 @@ echo -e "${BIBlue}╰═══════════════════�
 wget https://raw.githubusercontent.com/awanklod/juall/main/install/set-br.sh && chmod +x set-br.sh && ./set-br.sh
 clear
 
-echo -e "${BIBlue}╭══════════════════════════════════════════╮${NC}"
-echo -e "${BIBlue}│ ${BGCOLOR}          PROCESS INSTALLED OHP         ${NC}${BIBlue} │${NC}"
-echo -e "${BIBlue}╰══════════════════════════════════════════╯${NC}"
-wget https://raw.githubusercontent.com/awanklod/juall/main/sshws/ohp.sh && chmod +x ohp.sh && ./ohp.sh
-clear
+#echo -e "${BIBlue}╭══════════════════════════════════════════╮${NC}"
+#echo -e "${BIBlue}│ ${BGCOLOR}          PROCESS INSTALLED OHP         ${NC}${BIBlue} │${NC}"
+#echo -e "${BIBlue}╰══════════════════════════════════════════╯${NC}"
+#wget https://raw.githubusercontent.com/awanklod/juall/main/sshws/ohp.sh && chmod +x ohp.sh && ./ohp.sh
+#clear
 
 echo -e "${BIBlue}╭══════════════════════════════════════════╮${NC}"
 echo -e "${BIBlue}│ ${BGCOLOR}          DOWNLOAD EXTRA MENU           ${NC}${BIBlue} │${NC}"
@@ -796,7 +796,7 @@ rm /root/ssh-vpn.sh >/dev/null 2>&1
 rm /root/ins-xray.sh >/dev/null 2>&1
 rm /root/insshws.sh >/dev/null 2>&1
 rm /root/set-br.sh >/dev/null 2>&1
-rm /root/ohp.sh >/dev/null 2>&1
+#rm /root/ohp.sh >/dev/null 2>&1
 rm /root/update.sh >/dev/null 2>&1
 rm /root/slowdns.sh >/dev/null 2>&1
 rm -rf /etc/noobz
