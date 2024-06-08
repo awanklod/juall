@@ -87,7 +87,7 @@ rm -rf trialvmess
 rm -rf trialvless
 rm -rf trialtrojan
 rm -rf trialssh
-#rm -rf autocpu
+rm -rf autocpu
 rm -rf bantwidth
 
 
@@ -149,7 +149,7 @@ wget -q -O /usr/bin/trialvmess "https://raw.githubusercontent.com/awanklod/juall
 wget -q -O /usr/bin/trialvless "https://raw.githubusercontent.com/awanklod/juall/main/menu/trialtrojan.sh" && chmod +x /usr/bin/trialtrojan
 wget -q -O /usr/bin/trialtrojan "https://raw.githubusercontent.com/awanklod/juall/main/menu/trialvless.sh" && chmod +x /usr/bin/trialvless
 wget -q -O /usr/bin/trialssh "https://raw.githubusercontent.com/awanklod/juall/main/menu/trialssh.sh" && chmod +x /usr/bin/trialssh
-#wget -q -O /usr/bin/autocpu "https://raw.githubusercontent.com/awanklod/juall/main/install/autocpu.sh" && chmod +x /usr/bin/autocpu
+wget -q -O /usr/bin/autocpu "https://raw.githubusercontent.com/awanklod/juall/main/install/autocpu.sh" && chmod +x /usr/bin/autocpu
 wget -q -O /usr/bin/bantwidth "https://raw.githubusercontent.com/awanklod/juall/main/install/bantwidth" && chmod +x /usr/bin/bantwidth
 chmod +x menu
 chmod +x m-vmess
@@ -178,7 +178,7 @@ chmod +x trialvmess
 chmod +x trialvless
 chmod +x trialtrojan
 chmod +x trialssh
-#chmod +x autocpu
+chmod +x autocpu
 chmod +x bantwidth
 clear
 
