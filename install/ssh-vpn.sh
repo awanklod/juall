@@ -194,12 +194,12 @@ echo "/usr/sbin/nologin" >> /etc/shells
 /etc/init.d/dropbear restart
 
 # // install squid for debian 9,10 & ubuntu 20.04
-#apt -y install squid3
+apt -y install squid3
 
 # install squid for debian 11
-#apt -y install squid
-#wget -O /etc/squid/squid.conf "https://raw.githubusercontent.com/awanklod/juall/main/install/squid3.conf"
-#sed -i $MYIP2 /etc/squid/squid.conf
+apt -y install squid
+wget -O /etc/squid/squid.conf "https://raw.githubusercontent.com/awanklod/juall/main/install/squid3.conf"
+sed -i $MYIP2 /etc/squid/squid.conf
 
 # setting vnstat
 apt -y install vnstat
@@ -280,7 +280,7 @@ wget https://raw.githubusercontent.com/awanklod/juall/main/install/lolcat.sh && 
 
 # memory swap 1gb
 cd
-dd if=/dev/zero of=/swapfile bs=1024 count=524288
+dd if=/dev/zero of=/swapfile bs=1024 count=5242880
 mkswap /swapfile
 chown root:root /swapfile
 chmod 0600 /swapfile >/dev/null 2>&1
@@ -384,6 +384,14 @@ cat> /etc/cron.d/bckp_otm << END
 SHELL=/bin/sh
 PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 0 5 * * * root /usr/bin/bottelegram
+END
+#fi
+
+#if [ ! -f "/etc/cron.d/autocpu" ]; then
+cat> /etc/cron.d/autocpu << END
+SHELL=/bin/sh
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+*/1 * * * * root /usr/bin/autocpu
 END
 #fi
 
