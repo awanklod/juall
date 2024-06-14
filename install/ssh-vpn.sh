@@ -194,12 +194,12 @@ echo "/usr/sbin/nologin" >> /etc/shells
 /etc/init.d/dropbear restart
 
 # // install squid for debian 9,10 & ubuntu 20.04
-apt -y install squid3
+#apt -y install squid3
 
 # install squid for debian 11
-apt -y install squid
+#apt -y install squid
 #wget -O /etc/squid/squid.conf "https://raw.githubusercontent.com/awanklod/juall/main/install/squid3.conf"
-sed -i $MYIP2 /etc/squid/squid.conf
+#sed -i $MYIP2 /etc/squid/squid.conf
 
 # setting vnstat
 apt -y install vnstat
@@ -240,9 +240,9 @@ connect = 127.0.0.1:109
 accept = 2096
 connect = 700
 
-[ws-openvpn]
-accept = 992
-connect = 2099
+#[ws-openvpn]
+#accept = 992
+#connect = 2099
 
 [openvpn]
 accept = 442
