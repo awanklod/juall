@@ -105,7 +105,7 @@ cat > /etc/xray/config.json << END
   "inbounds": [
       {
       "listen": "127.0.0.1",
-      "port": 10000,
+      "port": 10085,
       "protocol": "dokodemo-door",
       "settings": {
         "address": "127.0.0.1"
@@ -404,8 +404,8 @@ NoNewPrivileges=true
 ExecStart=/usr/local/bin/xray run -config /etc/xray/config.json
 Restart=on-failure
 RestartPreventExitStatus=23
-LimitNPROC=10000
-LimitNOFILE=1000000
+LimitNPROC=10085
+LimitNOFILE=1008500
 
 [Install]
 WantedBy=multi-user.target
