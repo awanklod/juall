@@ -28,21 +28,21 @@ exit
 fi
 }
 checking_sc
-function ins-helium(){
-clear
-if [[ -e /usr/bin/helium ]]; then
-helium
-else
-echo -ne
-if [[ $(cat /etc/os-release | grep -w ID | head -n1 | sed 's/=//g' | sed 's/"//g' | sed 's/ID//g') == "ubuntu" ]]; then
-echo -e " OS UBUNTU GA BISA INSTALL MENU INI"
-read -n 1 -s -r -p "  Press any key to Back"
-menu
-else
-wget -q -O /usr/bin/helium "https://cdn.discordapp.com/attachments/1043809011474112566/1054014513428566016/helium.sh" && chmod +x /usr/bin/helium && helium
-fi
-fi
-}
+#function ins-helium(){
+#clear
+#if [[ -e /usr/bin/helium ]]; then
+#helium
+#else
+#echo -ne
+#if [[ $(cat /etc/os-release | grep -w ID | head -n1 | sed 's/=//g' | sed 's/"//g' | sed 's/ID//g') == "ubuntu" ]]; then
+#echo -e " OS UBUNTU GA BISA INSTALL MENU INI"
+#read -n 1 -s -r -p "  Press any key to Back"
+#menu
+#else
+#wget -q -O /usr/bin/helium "https://cdn.discordapp.com/attachments/1043809011474112566/1054014513428566016/helium.sh" && chmod +x /usr/bin/helium && helium
+#fi
+#fi
+#}
 function add-host(){
 fun_bar() {
 CMD[0]="$1"
@@ -869,18 +869,18 @@ sleep 2
 m-webmin
 fi
 }
-function speed(){
-cd
-if [[ -e /etc/speedi ]]; then
-speedtest
-else
-sudo apt-get install curl
-curl -s https://packagecloud.io/install/repositories/ookla/speedtest-cli/script.deb.sh | sudo bash
-sudo apt-get install speedtest
-touch /etc/speedi
-speedtest
-fi
-}
+#function speed(){
+#cd
+#if [[ -e /etc/speedi ]]; then
+#speedtest
+#else
+#sudo apt-get install curl
+#curl -s https://packagecloud.io/install/repositories/ookla/speedtest-cli/script.deb.sh | sudo bash
+#sudo apt-get install speedtest
+#touch /etc/speedi
+#speedtest
+#fi
+#}
 function gotopp(){
 cd
 if [[ -e /usr/bin/gotop ]]; then
@@ -1032,12 +1032,12 @@ fi
 read -n 1 -s -r -p "Press any key to back on menu"
 menu
 }
-function speed2(){
-apt install -y neofecth >/dev/null
-clear
-neofetch
-speedtest
-}
+#function speed2(){
+#apt install -y neofecth >/dev/null
+#clear
+#neofetch
+#speedtest
+#}
 function nameauthor(){
 read -rp "Input Your New Name : " -e name
 echo "$name" > /etc/profil
