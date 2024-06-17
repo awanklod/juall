@@ -5,12 +5,9 @@ IPVPS=$(curl -sS https://raw.githubusercontent.com/awanklod/izin_jual/main/ip | 
 if [[ $MYIP == $IPVPS ]]; then
 domain
 Casper2
-#botwa
 else
-  #key2
   domain
   Casper2
-  #botwa
 fi
 }
 clear
