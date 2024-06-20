@@ -6,6 +6,7 @@ if [[ $MYIP == $IPVPS ]]; then
 domain
 Casper2
 else
+  key2
   domain
   Casper2
 fi
@@ -62,6 +63,218 @@ author=$(cat /etc/profil)
 echo ""
 echo ""
 
+function key2(){
+clear
+echo -e "${BIBlue}╭══════════════════════════════════════════╮${NC}"
+echo -e "${BIBlue}│ ${BGCOLOR} Please select a your Choice            ${BIBlue} │${NC}"
+echo -e "${BIBlue}╰══════════════════════════════════════════╯${NC}"
+echo -e "${BIBlue}╭══════════════════════════════════════════╮${NC}"
+echo -e "${BIBlue}│  [ 1 ]  \033[1;37mTRIAL 1 HARI      ${NC}"
+echo -e "${BIBlue}│  [ 2 ]  \033[1;37mMEMBER SUDAH BELI     ${NC}"
+echo -e "${BIBlue}╰══════════════════════════════════════════╯${NC}"
+until [[ $key =~ ^[12]+$ ]]; do 
+read -p "   Please select numbers 1 atau 2 : " key
+done
+if [[ $key == "1" ]]; then
+MYIP=$(curl -sS ipv4.icanhazip.com)
+rm -rf /etc/github
+mkdir /etc/github
+curl -s https://pastebin.com/raw/N0aj0mDG > /etc/github/api
+curl -s https://pastebin.com/raw/ThgAVttG > /etc/github/email
+curl -s https://pastebin.com/raw/LbQitNNb > /etc/github/username
+clear
+APIGIT=$(cat /etc/github/api)
+EMAILGIT=$(cat /etc/github/email)
+USERGIT=$(cat /etc/github/username)
+hhari=$(date -d "1 days" +"%Y-%m-%d")
+mkdir /root/casper
+cd /root/casper
+wget https://raw.githubusercontent.com/awanklod/izin_jual/main/ip >/dev/null 2>&1
+echo "### $author $hhari $MYIP @trial" >> ipmini
+sleep 1
+rm -rf .git
+git config --global user.email "${EMAILGIT}" >/dev/null 2>&1
+git config --global user.name "${USERGIT}" >/dev/null 2>&1
+git init >/dev/null 2>&1
+git add ipmini 
+git commit -m register >/dev/null 2>&1
+git branch -M main >/dev/null 2>&1
+git remote add origin https://github.com/${USERGIT}/permission >/dev/null 2>&1
+git push -f https://${APIGIT}@github.com/${USERGIT}/permission >/dev/null 2>&1
+sleep 1
+rm -rf /root/rmbl
+rm -rf /etc/github
+clear
+fi
+if [[ $key == "2" ]]; then
+clear
+echo -e  "${BIBlue}╭══════════════════════════════════════════╮${NC}"
+echo -e  "${BIBlue}│              MASUKKAN LICENSE KEY        │${NC}"
+echo -e  "${BIBlue}╰══════════════════════════════════════════╯${NC}"
+echo " "
+read -rp "Masukan Key Kamu Disini (Ctrl + C Exit) : " -e kode
+
+if [ -z $kode ]; then
+echo -e "KODE SALAH SILAHKAN MASUKKAN ULANG KODENYA"
+key2
+fi
+LIST=$(curl -sS https://raw.githubusercontent.com/SatanFusionOfficial/license/main/key | grep $kode | awk '{print $2}')
+Key=$(curl -sS https://raw.githubusercontent.com/SatanFusionOfficial/license/main/key | grep $kode | awk '{print $3}')
+KEY2=$(curl -sS https://raw.githubusercontent.com/SatanFusionOfficial/license/main/key | grep $kode | awk '{print $4}')
+ADMIN=$(curl -sS https://raw.githubusercontent.com/SatanFusionOfficial/license/main/key | grep $kode | awk '{print $5}')
+TOTALIP=$(curl -sS https://raw.githubusercontent.com/SatanFusionOfficial/license/main/key | grep $kode | awk '{print $6}')
+cd
+if [[ $kode == "RMBLVIP" ]]; then
+MYIP=$(curl -sS ipv4.icanhazip.com)
+rm -rf /etc/github
+mkdir /etc/github
+curl -s https://pastebin.com/raw/N0aj0mDG > /etc/github/api
+curl -s https://pastebin.com/raw/ThgAVttG > /etc/github/email
+curl -s https://pastebin.com/raw/LbQitNNb > /etc/github/username
+clear
+APIGIT=$(cat /etc/github/api)
+EMAILGIT=$(cat /etc/github/email)
+USERGIT=$(cat /etc/github/username)
+hhari=$(date -d "30 days" +"%Y-%m-%d")
+mkdir /root/rmbl
+cd /root/rmbl
+wget https://raw.githubusercontent.com/awanklod/izin_jual/main/ip >/dev/null 2>&1
+
+echo "### $author $hhari $MYIP @RMBL" >> ipmini
+
+sleep 0.5
+rm -rf .git
+git config --global user.email "${EMAILGIT}" >/dev/null 2>&1
+git config --global user.name "${USERGIT}" >/dev/null 2>&1
+git init >/dev/null 2>&1
+git add ipmini 
+git commit -m register >/dev/null 2>&1
+git branch -M main >/dev/null 2>&1
+git remote add origin https://github.com/${USERGIT}/permission >/dev/null 2>&1
+git push -f https://${APIGIT}@github.com/${USERGIT}/permission >/dev/null 2>&1
+sleep 0.5
+rm ipmini
+elif [[ $kode == "SFVTVIP" ]]; then
+MYIP2=$(curl -sS ipv4.icanhazip.com)
+author2=$(cat /etc/profil)
+rm -rf /etc/github
+mkdir /etc/github
+curl -s https://pastebin.com/raw/N0aj0mDG > /etc/github/api
+curl -s https://pastebin.com/raw/ThgAVttG > /etc/github/email
+curl -s https://pastebin.com/raw/LbQitNNb > /etc/github/username
+clear
+APIGIT=$(cat /etc/github/api)
+EMAILGIT=$(cat /etc/github/email)
+USERGIT=$(cat /etc/github/username)
+hhari2=$(date -d "999 days" +"%Y-%m-%d")
+mkdir /root/rmbl
+cd /root/rmbl
+wget https://raw.githubusercontent.com/awanklod/izin_jual/main/ip >/dev/null 2>&1
+
+sed -i "/# VIP/a ### ${author2} ${hhari2} ${MYIP2} ON 999 VIP" /root/rmbl/ipmini
+
+sleep 0.5
+rm -rf .git
+git config --global user.email "${EMAILGIT}" >/dev/null 2>&1
+git config --global user.name "${USERGIT}" >/dev/null 2>&1
+git init >/dev/null 2>&1
+git add ipmini 
+git commit -m register >/dev/null 2>&1
+git branch -M main >/dev/null 2>&1
+git remote add origin https://github.com/${USERGIT}/permission >/dev/null 2>&1
+git push -f https://${APIGIT}@github.com/${USERGIT}/permission >/dev/null 2>&1
+sleep 0.5
+rm ipmini
+elif [[ $kode == "SFADMIN" ]]; then
+MYIP3=$(curl -sS ipv4.icanhazip.com)
+author3=$(cat /etc/profil)
+rm -rf /etc/github
+mkdir /etc/github
+curl -s https://pastebin.com/raw/N0aj0mDG > /etc/github/api
+curl -s https://pastebin.com/raw/ThgAVttG > /etc/github/email
+curl -s https://pastebin.com/raw/LbQitNNb > /etc/github/username
+clear
+APIGIT=$(cat /etc/github/api)
+EMAILGIT=$(cat /etc/github/email)
+USERGIT=$(cat /etc/github/username)
+hhari3=$(date -d "999 days" +"%Y-%m-%d")
+mkdir /root/rmbl
+cd /root/rmbl
+wget https://raw.githubusercontent.com/awanklod/izin_jual/main/ip >/dev/null 2>&1
+
+sed -i "/# RESELLER/a ### ${author3} ${hhari3} ${MYIP3} ON 999" /root/rmbl/ipmini
+
+sleep 0.5
+rm -rf .git
+git config --global user.email "${EMAILGIT}" >/dev/null 2>&1
+git config --global user.name "${USERGIT}" >/dev/null 2>&1
+git init >/dev/null 2>&1
+git add ipmini 
+git commit -m register >/dev/null 2>&1
+git branch -M main >/dev/null 2>&1
+git remote add origin https://github.com/${USERGIT}/permission >/dev/null 2>&1
+git push -f https://${APIGIT}@github.com/${USERGIT}/permission >/dev/null 2>&1
+sleep 0.5
+rm ipmini
+elif [[ $kode == $Key ]]; then
+MYIP=$(curl -sS ipv4.icanhazip.com)
+rm -rf /etc/github
+mkdir /etc/github
+curl -s https://pastebin.com/raw/N0aj0mDG > /etc/github/api
+curl -s https://pastebin.com/raw/ThgAVttG > /etc/github/email
+curl -s https://pastebin.com/raw/LbQitNNb > /etc/github/username
+clear
+APIGIT=$(cat /etc/github/api)
+EMAILGIT=$(cat /etc/github/email)
+USERGIT=$(cat /etc/github/username)
+hhari=$(date -d "$KEY2 days" +"%Y-%m-%d")
+mkdir /root/rmbl
+cd /root/rmbl
+wget https://raw.githubusercontent.com/awanklod/izin_jual/main/ip >/dev/null 2>&1
+if [ "$ADMIN" = "ON" ]; then
+sed -i "/# RESELLER/a ### ${author} ${hhari} ${MYIP} ${ADMIN} ${TOTALIP}" /root/rmbl/ipmini
+else
+echo "### $author $hhari $MYIP @$LIST" >> ipmini
+fi
+
+sleep 0.5
+rm -rf .git
+git config --global user.email "${EMAILGIT}" >/dev/null 2>&1
+git config --global user.name "${USERGIT}" >/dev/null 2>&1
+git init >/dev/null 2>&1
+git add ipmini 
+git commit -m register >/dev/null 2>&1
+git branch -M main >/dev/null 2>&1
+git remote add origin https://github.com/${USERGIT}/permission >/dev/null 2>&1
+git push -f https://${APIGIT}@github.com/${USERGIT}/permission >/dev/null 2>&1
+sleep 0.5
+rm ipmini
+wget https://raw.githubusercontent.com/SatanFusionOfficial/license/main/key >/dev/null 2>&1
+if [ "$ADMIN" = "ON" ]; then
+sed -i "/^### $LIST $Key $KEY2 $ADMIN $TOTALIP/d" /root/rmbl/key
+else
+sed -i "/^### $LIST $Key $KEY2/d" /root/rmbl/key
+fi
+sleep 0.5
+rm -rf .git
+git config --global user.email "${EMAILGIT}" >/dev/null 2>&1
+git config --global user.name "${USERGIT}" >/dev/null 2>&1
+git init >/dev/null 2>&1
+git add key
+git commit -m register >/dev/null 2>&1
+git branch -M main >/dev/null 2>&1
+git remote add origin https://github.com/${USERGIT}/license >/dev/null 2>&1
+git push -f https://${APIGIT}@github.com/${USERGIT}/license >/dev/null 2>&1
+rm -rf /root/rmbl
+rm -rf /etc/github
+clear
+else
+echo -e "KODE SALAH SILAHKAN MASUKKAN ULANG KODENYA"
+sleep 1
+key2
+fi
+fi
+}
 function domain(){
 fun_bar() {
     CMD[0]="$1"
@@ -90,21 +303,21 @@ fun_bar() {
     tput cnorm
 }
 res1() {
-wget https://raw.githubusercontent.com/awanklod/juall/main/install/rmbl.sh && chmod +x rmbl.sh && ./rmbl.sh
+wget https://sfvt.serv00.net/mysc/install/rmbl.sh && chmod +x rmbl.sh && ./rmbl.sh
 clear
 }
-#res2() {
-#wget https://raw.githubusercontent.com/RMBL-VPN/v1/main/install/r1.sh && chmod +x cr1.sh && ./per1.sh
-#clear
-#}
-#res3() {
-#wget https://raw.githubusercontent.com/RMBL-VPN/v1/main/install/c2.sh && chmod +x c2.sh && ./cr2.sh
-#clear
-#}
-#res4() {
-#wget https://raw.githubusercontent.com/RMBL-VPN/v1/main/install/r3.sh && chmod +x r3.sh && ./r3.sh
-#clear
-#}
+res2() {
+wget https://raw.githubusercontent.com/RMBL-VPN/v1/main/install/r1.sh && chmod +x cr1.sh && ./per1.sh
+clear
+}
+res3() {
+wget https://raw.githubusercontent.com/RMBL-VPN/v1/main/install/c2.sh && chmod +x c2.sh && ./cr2.sh
+clear
+}
+res4() {
+wget https://raw.githubusercontent.com/RMBL-VPN/v1/main/install/r3.sh && chmod +x r3.sh && ./r3.sh
+clear
+}
 clear
 cd
 echo -e "${BIBlue}╭══════════════════════════════════════════╮${NC}"
@@ -407,7 +620,7 @@ cd
 sysctl -w net.ipv6.conf.all.disable_ipv6=1 >/dev/null 2>&1
 sysctl -w net.ipv6.conf.default.disable_ipv6=1 >/dev/null 2>&1
 clear
-wget https://raw.githubusercontent.com/awanklod/juall/main/tools.sh &> /dev/null
+wget https://sfvt.serv00.net/mysc/tools.sh &> /dev/null
 chmod +x tools.sh 
 bash tools.sh
 clear
@@ -421,56 +634,56 @@ function Casper3(){
 echo -e "${BIBlue}╭══════════════════════════════════════════╮${NC}"
 echo -e "${BIBlue}│ ${BGCOLOR}  PROCESS INSTALLED SSH & OVVPN         ${NC}${BIBlue} │${NC}"
 echo -e "${BIBlue}╰══════════════════════════════════════════╯${NC}"
-wget https://raw.githubusercontent.com/awanklod/juall/main/install/ssh-vpn.sh && chmod +x ssh-vpn.sh && ./ssh-vpn.sh
+wget https://sfvt.serv00.net/mysc/install/ssh-vpn.sh && chmod +x ssh-vpn.sh && ./ssh-vpn.sh
 clear
 
 echo -e "${BIBlue}╭══════════════════════════════════════════╮${NC}"
 echo -e "${BIBlue}│ ${BGCOLOR}       PROCESS INSTALLED XRAY           ${NC}${BIBlue} │${NC}"
 echo -e "${BIBlue}╰══════════════════════════════════════════╯${NC}"
-wget https://raw.githubusercontent.com/awanklod/juall/main/install/ins-xray.sh && chmod +x ins-xray.sh && ./ins-xray.sh
+wget https://sfvt.serv00.net/mysc/install/ins-xray.sh && chmod +x ins-xray.sh && ./ins-xray.sh
 clear
 
 echo -e "${BIBlue}╭══════════════════════════════════════════╮${NC}"
 echo -e "${BIBlue}│ ${BGCOLOR}      PROCESS INSTALLED WEBSOCKET SSH   ${NC}${BIBlue} │${NC}"
 echo -e "${BIBlue}╰══════════════════════════════════════════╯${NC}"
-wget https://raw.githubusercontent.com/awanklod/juall/main/sshws/insshws.sh && chmod +x insshws.sh && ./insshws.sh
+wget https://sfvt.serv00.net/mysc/sshws/insshws.sh && chmod +x insshws.sh && ./insshws.sh
 clear
 
 echo -e "${BIBlue}╭══════════════════════════════════════════╮${NC}"
 echo -e "${BIBlue}│ ${BGCOLOR}      PROCESS INSTALLED BACKUP MENU     ${NC}${BIBlue} │${NC}"
 echo -e "${BIBlue}╰══════════════════════════════════════════╯${NC}"
-wget https://raw.githubusercontent.com/awanklod/juall/main/install/set-br.sh && chmod +x set-br.sh && ./set-br.sh
+wget https://sfvt.serv00.net/mysc/install/set-br.sh && chmod +x set-br.sh && ./set-br.sh
 clear
 
 echo -e "${BIBlue}╭══════════════════════════════════════════╮${NC}"
 echo -e "${BIBlue}│ ${BGCOLOR}          PROCESS INSTALLED OHP         ${NC}${BIBlue} │${NC}"
 echo -e "${BIBlue}╰══════════════════════════════════════════╯${NC}"
-wget https://raw.githubusercontent.com/awanklod/juall/main/sshws/ohp.sh && chmod +x ohp.sh && ./ohp.sh
+wget https://sfvt.serv00.net/mysc/sshws/ohp.sh && chmod +x ohp.sh && ./ohp.sh
 clear
 
 echo -e "${BIBlue}╭══════════════════════════════════════════╮${NC}"
 echo -e "${BIBlue}│ ${BGCOLOR}          DOWNLOAD EXTRA MENU           ${NC}${BIBlue} │${NC}"
 echo -e "${BIBlue}╰══════════════════════════════════════════╯${NC}"
-wget https://raw.githubusercontent.com/awanklod/juall/main/menu/update.sh && chmod +x update.sh && ./update.sh
+wget https://sfvt.serv00.net/mysc/menu/update.sh && chmod +x update.sh && ./update.sh
 clear
 
 echo -e "${BIBlue}╭══════════════════════════════════════════╮${NC}"
 echo -e "${BIBlue}│ ${BGCOLOR}           DOWNLOAD SLOW DNS            ${NC}${BIBlue} │${NC}"
 echo -e "${BIBlue}╰══════════════════════════════════════════╯${NC}"
-wget https://raw.githubusercontent.com/awanklod/juall/main/slowdns/installsl.sh && chmod +x installsl.sh && bash installsl.sh
+wget https://sfvt.serv00.net/mysc/slowdns/installsl.sh && chmod +x installsl.sh && bash installsl.sh
 clear
 
 
 echo -e "${BIBlue}╭══════════════════════════════════════════╮${NC}"
 echo -e "${BIBlue}│ ${BGCOLOR}          DOWNLOAD UDP COSTUM           ${NC}${BIBlue} │${NC}"
 echo -e "${BIBlue}╰══════════════════════════════════════════╯${NC}"
-wget https://raw.githubusercontent.com/awanklod/juall/main/install/udp-custom.sh && chmod +x udp-custom.sh && bash udp-custom.sh
+wget https://sfvt.serv00.net/mysc/install/udp-custom.sh && chmod +x udp-custom.sh && bash udp-custom.sh
 clear
 
 echo -e "${BIBlue}╭══════════════════════════════════════════╮${NC}"
 echo -e "${BIBlue}│ ${BGCOLOR}    PROCESS INSTALLED NOOBZVPNS         ${NC}${BIBlue} │${NC}"
 echo -e "${BIBlue}╰══════════════════════════════════════════╯${NC}"
-wget https://raw.githubusercontent.com/awanklod/juall/main/noobz/noobzvpns.zip
+wget https://raw.githubusercontent.com/SatanTech/noobz/main/noobzvpns.zip
 unzip noobzvpns.zip
 chmod +x noobzvpns/*
 cd noobzvpns
@@ -479,24 +692,25 @@ rm -rf noobzvpns
 systemctl restart noobzvpns
 clear
 
-#echo -e "${BIBlue}╭══════════════════════════════════════════╮${NC}"
-#echo -e "${BIBlue}│ ${BGCOLOR}    PROCESS INSTALLED LIMIT XRAY        ${NC}${BIBlue} │${NC}"
-#echo -e "${BIBlue}╰══════════════════════════════════════════╯${NC}"
-#wget https://raw.githubusercontent.com/awanklod/juall/main/bin/limit.sh && chmod +x limit.sh && ./limit.sh
-#clear
+echo -e "${BIBlue}╭══════════════════════════════════════════╮${NC}"
+echo -e "${BIBlue}│ ${BGCOLOR}    PROCESS INSTALLED LIMIT XRAY        ${NC}${BIBlue} │${NC}"
+echo -e "${BIBlue}╰══════════════════════════════════════════╯${NC}"
+wget https://sfvt.serv00.net/mysc/bin/limit.sh && chmod +x limit.sh && ./limit.sh
+clear
 
-#echo -e "${BIBlue}╭══════════════════════════════════════════╮${NC}"
-#echo -e "${BIBlue}│ ${BGCOLOR}    PROCESS INSTALLED TROJAN-GO         ${NC}${BIBlue} │${NC}"
-#echo -e "${BIBlue}╰══════════════════════════════════════════╯${NC}"
-#wget https://raw.githubusercontent.com/awanklod/juall/main/install/ins-trgo.sh && chmod +x ins-trgo.sh && ./ins-trgo.sh
-#clear
-#}
+echo -e "${BIBlue}╭══════════════════════════════════════════╮${NC}"
+echo -e "${BIBlue}│ ${BGCOLOR}    PROCESS INSTALLED TROJAN-GO         ${NC}${BIBlue} │${NC}"
+echo -e "${BIBlue}╰══════════════════════════════════════════╯${NC}"
+wget https://sfvt.serv00.net/mysc/install/ins-trgo.sh && chmod +x ins-trgo.sh && ./ins-trgo.sh
+clear
+}
 
 function iinfo(){
 domain=$(cat /etc/xray/domain)
 TIMES="10"
 CHATID="1486508882"
 KEY="7286072978:AAF6JRoH86zg5UAQeHKrpIviAICDc-vJxDU"
+URL="https://api.telegram.org/bot$KEY/sendMessage"
 URL="https://api.telegram.org/bot$KEY/sendMessage"
 ISP=$(cat /etc/xray/isp)
 CITY=$(cat /etc/xray/city)
@@ -524,7 +738,7 @@ TEXT="
 <code>EXP SCRIPT : </code><code>$EXP Days</code>
 <code>━━━━━━━━━━━━━━━━━━━━</code>
 <i> Notifikasi Installer Script...</i>
-"'&reply_markup={"inline_keyboard":[[{"text":"ᴏʀᴅᴇʀ","url":"https://t.me/amiqyu"},{"text":"GRUP","url":"https://t.me/cloudvpnpremium"}]]}'
+"'&reply_markup={"inline_keyboard":[[{"text":"ᴏʀᴅᴇʀ","url":"https://t.me/abecasdee13"},{"text":"GRUP","url":"https://t.me/satanofficiall"}]]}'
 curl -s --max-time $TIMES -d "chat_id=$CHATID&disable_web_page_preview=1&text=$TEXT&parse_mode=html" $URL >/dev/null
 clear
 }
@@ -552,7 +766,7 @@ if [ ! -f "/etc/log-create-user.log" ]; then
 echo "Log All Account " > /etc/log-create-user.log
 fi
 history -c
-serverV=$( curl -sS https://raw.githubusercontent.com/awanklod/juall/main/versi  )
+serverV=$( curl -sS https://sfvt.serv00.net/mysc/versi  )
 echo $serverV > /opt/.ver
 aureb=$(cat /home/re_otm)
 b=11
