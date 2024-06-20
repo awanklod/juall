@@ -9,7 +9,7 @@ WH='\033[1;37m'
 ipsaya=$(wget -qO- ifconfig.me)
 data_server=$(curl -v --insecure --silent https://google.com/ 2>&1 | grep Date | sed -e 's/< Date: //')
 date_list=$(date +"%Y-%m-%d" -d "$data_server")
-data_ip="https://raw.githubusercontent.com/SatanFusionOfficial/permission/main/ip"
+data_ip="https://raw.githubusercontent.com/awanklod/izin_jual/main/ip"
 checking_sc() {
 useexp=$(curl -sS $data_ip | grep $ipsaya | awk '{print $3}')
 if [[ $date_list < $useexp ]]; then
@@ -23,7 +23,7 @@ echo -e "            ${RED}PERMISSION DENIED !${NC}"
 echo -e "   \033[0;33mYour VPS${NC} $ipsaya \033[0;33mHas been Banned${NC}"
 echo -e "     \033[0;33mBuy access permissions for scripts${NC}"
 echo -e "             \033[0;33mContact Admin :${NC}"
-echo -e "     \033[0;36mTelegram${NC}: https://t.me/Rmblvpn1"
+echo -e "     \033[0;36mTelegram${NC}: https://t.me/amiqyu"
 echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}"
 exit
 fi
@@ -245,14 +245,14 @@ service sshd restart > /dev/null 2>&1;
 fi
 service dropbear restart > /dev/null 2>&1;
 j=0;
-fi RED="\033[0;31m"
+fi�RED="\033[0;31m"
 COLOR1="$(cat /etc/rmbl/theme/$colornow | grep -w "TEXT" | cut -d: -f2|sed 's/ //g')"
 COLBG1="$(cat /etc/rmbl/theme/$colornow | grep -w "BG" | cut -d: -f2|sed 's/ //g')"
 WH='\033[1;37m'
 ipsaya=$(wget -qO- ifconfig.me)
 data_server=$(curl -v --insecure --silent https://google.com/ 2>&1 | grep Date | sed -e 's/< Date: //')
 date_list=$(date +"%Y-%m-%d" -d "$data_server")
-data_ip="https://raw.githubusercontent.com/SatanFusionOfficial/permission/main/ip"
+data_ip="https://raw.githubusercontent.com/awanklod/izin_jual/main/ip"
 checking_sc() {
 useexp=$(curl -sS $data_ip | grep $ipsaya | awk '{print $3}')
 if [[ $date_list < $useexp ]]; then
@@ -266,7 +266,7 @@ echo -e "            ${RED}PERMISSION DENIED !${NC}"
 echo -e "   \033[0;33mYour VPS${NC} $ipsaya \033[0;33mHas been Banned${NC}"
 echo -e "     \033[0;33mBuy access permissions for scripts${NC}"
 echo -e "             \033[0;33mContact Admin :${NC}"
-echo -e "     \033[0;36mTelegram${NC}: https://t.me/rmblvpn1"
+echo -e "     \033[0;36mTelegram${NC}: https://t.me/amiqyu"
 echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}"
 exit
 fi
@@ -467,7 +467,7 @@ curl -s --max-time $TIMES -d "chat_id=$CHATID&disable_web_page_preview=1&text=$T
 fi
 if [ $sship -gt $ssssh ]; then
 exp=$(grep -i "### ${username[$i]}" "/etc/xray/ssh" | cut -d ' ' -f 3 | sort | uniq)
-passq"      dateFromServer=$(curl -v --insecure --silent https://google.com/ 2>&1 | grep Date | sed -e 's/< Date: //')
+passq"������dateFromServer=$(curl -v --insecure --silent https://google.com/ 2>&1 | grep Date | sed -e 's/< Date: //')
 biji=`date +"%Y-%m-%d" -d "$dateFromServer"`
 colornow=$(cat /etc/rmbl/theme/color.conf)
 NC="\e[0m"
@@ -478,7 +478,7 @@ WH='\033[1;37m'
 ipsaya=$(wget -qO- ifconfig.me)
 data_server=$(curl -v --insecure --silent https://google.com/ 2>&1 | grep Date | sed -e 's/< Date: //')
 date_list=$(date +"%Y-%m-%d" -d "$data_server")
-data_ip="https://raw.githubusercontent.com/SatanFusionOfficial/permission/main/ip"
+data_ip="https://raw.githubusercontent.com/awanklod/izin_jual/main/ip"
 checking_sc() {
 useexp=$(curl -sS $data_ip | grep $ipsaya | awk '{print $3}')
 if [[ $date_list < $useexp ]]; then
@@ -492,7 +492,7 @@ echo -e "            ${RED}PERMISSION DENIED !${NC}"
 echo -e "   \033[0;33mYour VPS${NC} $ipsaya \033[0;33mHas been Banned${NC}"
 echo -e "     \033[0;33mBuy access permissions for scripts${NC}"
 echo -e "             \033[0;33mContact Admin :${NC}"
-echo -e "     \033[0;36mTelegram${NC}: https://t.me/Rmblvpn1"
+echo -e "     \033[0;36mTelegram${NC}: https://t.me/amiqyu"
 echo -e "$COLOR1└─────────────────────────────────────────────────┘${NC}"
 exit
 fi
