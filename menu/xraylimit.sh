@@ -9,7 +9,7 @@ WH='\033[1;37m'
 ipsaya=$(wget -qO- ipinfo.io/ip)
 data_server=$(curl -v --insecure --silent https://google.com/ 2>&1 | grep Date | sed -e 's/< Date: //')
 date_list=$(date +"%Y-%m-%d" -d "$data_server")
-data_ip="https://raw.githubusercontent.com/SatanFusionOfficial/permission/main/ip"
+data_ip="https://raw.githubusercontent.com/awanklod/izin_jual/main/ip"
 checking_sc() {
 useexp=$(curl -sS $data_ip | grep $ipsaya | awk '{print $3}')
 if [[ $date_list < $useexp ]]; then
@@ -645,10 +645,10 @@ cd
 if [[ ! -e /etc/limit/trojan-go ]]; then
 mkdir -p /etc/limit/trojan-go
 fi
-trda=($(cat /etc/xray/config.json | grep "^#trg" | awk '{print $2}' | sort -u))
-echo -n >/tmp/tr
-for db3 in ${trda[@]}; do
-logtr=$(cat /var/log/xray/access.log | grep -w "email: ${db3}" | tail -n 150)
+trgoda=($(cat /etc/trojan-go/trgo | grep "^###" | awk '{print $2}' | sort -u))
+echo -n >/tmp/trgo
+for db3 in ${trgoda[@]}; do
+logtr=$(cat /var/log/trojan-go/trojan-go.log | grep -w "email: ${db3}" | tail -n 150)
 while read a; do
 if [[ -n ${a} ]]; then
 set -- ${a}
@@ -660,67 +660,66 @@ now=$(tim2sec ${timenow})
 client=$(tim2sec ${inu})
 nowt=$(((${now} - ${client})))
 if [[ ${nowt} -lt 40 ]]; then
-cat /tmp/tr | grep -w "${ina}" | grep -w "${enu}" >/dev/null
+cat /tmp/trgo | grep -w "${ina}" | grep -w "${enu}" >/dev/null
 if [[ $? -eq 1 ]]; then
-echo "${ina} ${inu} WIB : ${enu}" >>/tmp/tr
-restr=$(cat /tmp/tr)
+echo "${ina} ${inu} WIB : ${enu}" >>/tmp/trgo
+restrgo=$(cat /tmp/trgo)
 fi
 fi
 fi
-done <<<"${logtr}"
+done <<<"${logtrgo}"
 done
 if [[ ${restr} != "" ]]; then
-for usrtr in ${trda[@]}; do
-trip=$(cat /tmp/tr | grep -w "${usrtr}" | wc -l)
-trip2=$(cat /tmp/tr | grep -w "${usrtr}" | cut -d ' ' -f 2-8 | nl -s '. ' | while read line; do printf "%-20s\n" "$line"; done )
-sdf=$(ls "/etc/trojan-go" | grep -w "${usrtr}IP")
+for usrtrgo in ${trgoda[@]}; do
+trgoip=$(cat /tmp/trgo | grep -w "${usrtrgo}" | wc -l)
+trgoip2=$(cat /tmp/trgo | grep -w "${usrtrgo}" | cut -d ' ' -f 2-8 | nl -s '. ' | while read line; do printf "%-20s\n" "$line"; done )
+sdf=$(ls "/etc/trojan-go" | grep -w "${usrtrgo}IP")
 if [[ -z ${sdf} ]]; then
 sadsde="0"
 else
-sadsde=$(cat /etc/trojan-go/${usrtr}IP)
+sadsde=$(cat /etc/trojan-go/${usrtgo}IP)
 fi
-if [[ ${trip} -gt "0" ]]; then
-downlink=$(xray api stats --server=127.0.0.1:10085 -name "user>>>${usrtr}>>>traffic>>>downlink" | grep -w "value" | awk '{print $2}' | cut -d '"' -f2)
+if [[ ${trgoip} -gt "0" ]]; then
+downlink=$(xray api stats --server=127.0.0.1:10085 -name "user>>>${usrtrgo}>>>traffic>>>downlink" | grep -w "value" | awk '{print $2}' | cut -d '"' -f2)
 cd
-if [ ! -e /etc/limit/trojan-go/$usrtr ]; then
-echo "${downlink}" > /etc/limit/trojan-go/${usrtr}
-xray api stats --server=127.0.0.1:10085 -name "user>>>${usrtr}>>>traffic>>>downlink" -reset > /dev/null 2>&1
+if [ ! -e /etc/limit/trojan-go/$usrtrgo ]; then
+echo "${downlink}" > /etc/limit/trojan-go/${usrtrgo}
+xray api stats --server=127.0.0.1:10085 -name "user>>>${usrtrgo}>>>traffic>>>downlink" -reset > /dev/null 2>&1
 else
-plus2=$(cat /etc/limit/trojan-go/$usrtr)
+plus2=$(cat /etc/limit/trojan-go/$usrtrgo)
 if [[ -z ${plus2} ]]; then
-echo "1" > /etc/limit/trojan-go/$usrtr
+echo "1" > /etc/limit/trojan-go/$usrtrgo
 fi
 plus3=$(( ${downlink} + ${plus2} ))
-echo "${plus3}" > /etc/limit/trojan-go/${usrtr}
-xray api stats --server=127.0.0.1:10085 -name "user>>>${usrtr}>>>traffic>>>downlink" -reset > /dev/null 2>&1
+echo "${plus3}" > /etc/limit/trojan-go/${usrtrgo}
+xray api stats --server=127.0.0.1:10085 -name "user>>>${usrtrgo}>>>traffic>>>downlink" -reset > /dev/null 2>&1
 fi
-if [ ! -e /etc/trojan-go/${usrtr} ]; then
-echo "999999999999" > /etc/trojan-go/${usrtr}
+if [ ! -e /etc/trojan-go/${usrtrgo} ]; then
+echo "999999999999" > /etc/trojan-go/${usrtrgo}
 fi
-limit=$(cat /etc/trojan-go/${usrtr})
-usage=$(cat /etc/limit/trojan-go/${usrtr})
+limit=$(cat /etc/trojan-go/${usrtrgo})
+usage=$(cat /etc/limit/trojan-go/${usrtrgo})
 if [ $usage -gt $limit ]; then
-exptr=$(grep -wE "^#tr $usrtr" "/etc/xray/config.json" | cut -d ' ' -f 3 | sort | uniq)
-uuidtr=$(grep -wE "^#tr $usrtr" "/etc/xray/config.json" | cut -d ' ' -f 4 | sort | uniq)
-echo "### $usrtr $exptr $uuidtr" >> /etc/trojan-go/userQuota
-sed -i "/^#tr $usrtr $exptr/,/^},{/d" /etc/xray/config.json
-sed -i "/^#trg $usrtr $exptr/,/^},{/d" /etc/xray/config.json
-rm /etc/limit/trojan-go/${usrtr} >/dev/null 2>&1
+exptrgo=$(grep -wE "^### $usrtrgo" "/etc/trojan-go/config.json" | cut -d ' ' -f 3 | sort | uniq)
+uuidtrgo=$(grep -wE "^### $usrtrgo" "/etc/trojan-go/config.json" | cut -d ' ' -f 4 | sort | uniq)
+echo "### $usrtrgo $exptrgo $uuidtrgo" >> /etc/trojan-go/userQuota
+sed -i "/^### $usrtrgo $exptrgo/,/^},{/d" /etc/trojan-go/config.json
+rm /etc/limit/trojan-go/${usrtrgo} >/dev/null 2>&1
 systemctl restart xray >/dev/null 2>&1
 fi
 fi
-if [[ ${trip} -gt $sadsde ]]; then
-byt=$(cat /etc/limit/trojan-go/$usrtr)
+if [[ ${trgoip} -gt $sadsde ]]; then
+byt=$(cat /etc/limit/trojan-go/$usrtrgo)
 gb=$(convert ${byt})
-echo "$usrtr ${trip}" >> /etc/trojan-go/${usrtr}login
-trojanip=$(cat /etc/trojan-go/${usrtr}login | wc -l)
-sstrojan1=$(ls "/etc/trojan-go" | grep -w "notif")
+echo "$usrtrgo ${trgoip}" >> /etc/trojan-go/${usrtrgo}login
+trojangoip=$(cat /etc/trojan-go/${usrtrgo}login | wc -l)
+sstrojango1=$(ls "/etc/trojan-go" | grep -w "notif")
 if [[ -z ${sstrojan1} ]]; then
-sstrojan="3"
+sstrojango="3"
 else
-sstrojan=$(cat /etc/trojan-go/notif)
+sstrojago=$(cat /etc/trojan-go/notif)
 fi
-if [ $trojanip = $sstrojan ]; then
+if [ $trojangoip = $sstrojan ]; then
 echo -ne
 if [ $type = "delete" ]; then
 TEXT2="
@@ -731,24 +730,23 @@ TEXT2="
 <b>ISP : ${ISP}</b>
 <b>CITY : ${CITY}</b>
 <b>DATE LOGIN : $DATE</b>
-<b>USERNAME : $usrtr </b>
-<b>TOTAL LOGIN IP : ${trip} </b>
+<b>USERNAME : $usrtrgo </b>
+<b>TOTAL LOGIN IP : ${trgoip} </b>
 <b>USAGE : ${gb} </b>
 <code>◇━━━━━━━━━━━━━━◇</code>
 <b>⚠️ TIME LOGIN : IP LOGIN </b>
 <code>◇━━━━━━━━━━━━━━◇</code>
-<code>$trip2</code>
+<code>$trgoip2</code>
 <code>◇━━━━━━━━━━━━━━◇</code>
-<i>${sstrojan}x Multi Login Auto Lock Account...</i>
+<i>${sstrojango}x Multi Login Auto Lock Account...</i>
 "
-echo "" > /tmp/tr
-sed -i "/${usrtr}/d" /var/log/xray/access.log
+echo "" > /tmp/trgo
+sed -i "/${usrtrgo}/d" /var/log/xray/access.log
 curl -s --max-time $TIMES -d "chat_id=$CHATID&disable_web_page_preview=1&text=$TEXT2&parse_mode=html" $URL >/dev/null
-exptr=$(grep -wE "^#tr $usrtr" "/etc/xray/config.json" | cut -d ' ' -f 3 | sort | uniq)
+exptr=$(grep -wE "^### $usrtr" "/etc/xray/config.json" | cut -d ' ' -f 3 | sort | uniq)
 uuidtr=$(grep -wE "^#tr $usrtr" "/etc/xray/config.json" | cut -d ' ' -f 4 | sort | uniq)
 echo "### $usrtr $exptr $uuidtr" >> /etc/trojan-go/listlock
-sed -i "/^#tr $usrtr $exptr/,/^},{/d" /etc/xray/config.json
-sed -i "/^#trg $usrtr $exptr/,/^},{/d" /etc/xray/config.json
+sed -i "/^### $usrtr $exptr/,/^},{/d" /etc/xray/config.json
 rm /etc/trojan-go/${usrtr}login >/dev/null 2>&1
 systemctl restart xray >/dev/null 2>&1
 fi
@@ -771,16 +769,15 @@ TEXT2="
 <code>◇━━━━━━━━━━━━━━◇</code>
 <i>${sstrojan}x Multi Login Lock Account $waktulock Minutes...</i>
 "
-echo "" > /tmp/tr
-sed -i "/${usrtr}/d" /var/log/xray/access.log
+echo "" > /tmp/trgo
+sed -i "/${usrtrgo}/d" /var/log/xray/access.log
 curl -s --max-time $TIMES -d "chat_id=$CHATID&disable_web_page_preview=1&text=$TEXT2&parse_mode=html" $URL >/dev/null
-exptr=$(grep -wE "^#tr $usrtr" "/etc/xray/config.json" | cut -d ' ' -f 3 | sort | uniq)
-uuidtr=$(grep -wE "^#tr $usrtr" "/etc/xray/config.json" | cut -d ' ' -f 4 | sort | uniq)
-echo "### $usrtr $exptr $uuidtr" >> /etc/trojan-go/listlock
-sed -i "/^#tr $usrtr $exptr/,/^},{/d" /etc/xray/config.json
-sed -i "/^#trg $usrtr $exptr/,/^},{/d" /etc/xray/config.json
-rm /etc/trojan-go/${usrtr}login >/dev/null 2>&1
-cat> /etc/cron.d/trojan-go${usrtr} << EOF
+exptrgo=$(grep -wE "^### $usrtrgo" "/etc/trojan-go/config.json" | cut -d ' ' -f 3 | sort | uniq)
+uuidtrgo=$(grep -wE "^### $usrtrgo" "/etc/trojan-go/config.json" | cut -d ' ' -f 4 | sort | uniq)
+echo "### $usrtrgo $exptrgo $uuidtrgo" >> /etc/trojan-go/listlock
+sed -i "/^### $usrtrgo $exptrgo/,/^},{/d" /etc/trojan-go/config.json
+rm /etc/trojan-go/${usrtrgo}login >/dev/null 2>&1
+cat> /etc/cron.d/trojan-go${usrtrgo} << EOF
 SHELL=/bin/sh
 PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 */$waktulock * * * * root /usr/bin/xray trojan-go $usrtr $uuidtr $exptr
@@ -812,11 +809,10 @@ sed -i "/${usrtr}/d" /var/log/xray/access.log
 curl -s --max-time $TIMES -d "chat_id=$CHATID&disable_web_page_preview=1&text=$TEXT&parse_mode=html" $URL >/dev/null
 fi
 if [ $trojanip -gt $sstrojan ]; then
-exptr=$(grep -wE "^#tr $usrtr" "/etc/xray/config.json" | cut -d ' ' -f 3 | sort | uniq)
-uuidtr=$(grep -wE "^#tr $usrtr" "/etc/xray/config.json" | cut -d ' ' -f 4 | sort | uniq)
-echo "### $usrtr $exptr $uuidtr" >> /etc/trojan-go/listlock
-sed -i "/^#tr $usrtr $exptr/,/^},{/d" /etc/xray/config.json
-sed -i "/^#trg $usrtr $exptr/,/^},{/d" /etc/xray/config.json
+exptrgo=$(grep -wE "^### $usrtrgo" "/etc/trojan-go/config.json" | cut -d ' ' -f 3 | sort | uniq)
+uuidtrgo=$(grep -wE "^### $usrtrgo" "/etc/trojan-go/config.json" | cut -d ' ' -f 4 | sort | uniq)
+echo "### $usrtrgo $exptrgo $uuidtr" >> /etc/trojan-go/listlock
+sed -i "/^### $usrtrgo $exptrgo/,/^},{/d" /etc/trojan-go/config.json
 rm /etc/trojan-go/${usrtr}login >/dev/null 2>&1
 systemctl restart xray >/dev/null 2>&1
 fi
