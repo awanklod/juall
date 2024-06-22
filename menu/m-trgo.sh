@@ -59,119 +59,46 @@ if [ ! -e /etc/trojan-go/akun ]; then
 mkdir -p /etc/trojan-go/akun
 fi
 function addtrgo() {
-
+uuid=$(cat /etc/trojan-go/uuid.txt)
+if [[ "$IP" = "" ]]; then
+domain=$(cat /etc/xray/domain)
+else
+domain=$IP
+fi
 until [[ $user =~ ^[a-zA-Z0-9_]+$ && ${user_EXISTS} == '0' ]]; do
 		read -rp "Username : " -e user
 		user_EXISTS=$(grep -w $user /etc/trojan-go/trgo | wc -l)
 
 		if [[ ${user_EXISTS} == '1' ]]; then
 			echo ""
-			echo -e "Username ${COLOR1}${user}${NC} Already On VPS Please Choose Another"
+			echo -e "Username ${RED}${user}${NC} Already On VPS Please Choose Another"
 			exit 1
 		fi
 	done
-uuid=$(cat /etc/trojan-go/uuid.txt)
-read -p "Expired (days): " masaaktif
-read -p "Limit User (IP) or 0 Unlimited: " iplimit
-read -p "Limit User (GB) or 0 Unlimited: " Quota
-tgl=$(date -d "$masaaktif days" +"%d")
-bln=$(date -d "$masaaktif days" +"%b")
-thn=$(date -d "$masaaktif days" +"%Y")
-expe="$tgl $bln, $thn"
-tgl2=$(date +"%d")
-bln2=$(date +"%b")
-thn2=$(date +"%Y")
-tnggl="$tgl2 $bln2, $thn2"
+read -p "Expired (Days) : " masaaktif
+sed -i '/"'""$uuid""'"$/a\,"'""$user""'"' /etc/trojan-go/config.json
 exp=`date -d "$masaaktif days" +"%Y-%m-%d"`
 hariini=`date -d "0 days" +"%Y-%m-%d"`
-sed -i '/"'""$uuid""'"$/a\,"'""$user""'"' /etc/trojan-go/config.json
 echo -e "### $user $exp" >> /etc/trojan-go/trgo
 systemctl restart trojan-go.service
-linktls="trojan-go://${user}@${domain}:2087/?sni=${domain}&type=ws&host=${domain}&path=/trojango&encryption=none#$user"
-linktrgotls="trojan-go://${user}@${domain}:2087?%26sni=${domain}%26type=ws%26host=${domain}%26path=%2Ftrojango%26encryption=none#${user}"
-
-if [ ! -e /etc/trojan-go ]; then
-  mkdir -p /etc/trojan-go
-fi
-
-if [[ $iplimit -gt 0 ]]; then
-mkdir -p /etc/sfvt/limit/trojan-go/ip
-echo -e "$iplimit" > /etc/sfvt/limit/trojan-go/ip/$user
-else
-echo > /dev/null
-fi
-
-if [ -z ${Quota} ]; then
-  Quota="0"
-fi
-
-c=$(echo "${Quota}" | sed 's/[^0-9]*//g')
-d=$((${c} * 1024 * 1024 * 1024))
-
-if [[ ${c} != "0" ]]; then
-  echo "${d}" >/etc/trojan-go/${user}
-fi
-DATADB=$(cat /etc/trojan-go/trgo | grep "^###" | grep -w "${user}" | awk '{print $2}')
-if [[ "${DATADB}" != '' ]]; then
-  sed -i "/\b${user}\b/d" /etc/trojan-go/trgo
-fi
-echo "### ${user} ${exp} ${uuid} ${Quota} ${iplimit}" >>/etc/trojan-go/trgo
-TEXT="
-◇━━━━━━━━━━━━━━━━━◇
-Premium Trojan-GO Account
-◇━━━━━━━━━━━━━━━━━◇
-Remarks : <code>${user}</code>
-IP/Host : <code>${MYIP}</code>
-Address : <code>${domain}</code>
-Port : <code>2087</code>
-Password : <code>${user}</code>
-Encryption : <code>none</code>
-Path : <code>/trojango</code>
-Created : <code>$hariini</code>
-Expired : <code>$exp</code>
-◇━━━━━━━━━━━━━━━━━◇
-Link TrGo TLS : <code>${linktrgotls}</code>
-◇━━━━━━━━━━━━━━━━━◇
-"
-curl -s --max-time $TIMES -d "chat_id=$CHATID&disable_web_page_preview=1&text=$TEXT&parse_mode=html" $URL >/dev/null
-cd
-if [ ! -e /etc/tele ]; then
-echo -ne
-else
-echo "$TEXT" > /etc/notiftele
-bash /etc/tele
-fi
-user2=$(echo "$user" | cut -c 1-3)
-TIME2=$(date +'%Y-%m-%d %H:%M:%S')
-TEXT2="
-<code>◇━━━━━━━━━━━━━━━━━━━◇</code>
-<b>   PEMBELIAN TROJAN-GO SUCCES </b>
-<code>◇━━━━━━━━━━━━━━━━━━━◇</code>
-<b>DOMAIN  :</b> <code>${domain} </code>
-<b>CITY    :</b> <code>$CITY </code>
-<b>DATE    :</b> <code>${TIME2} WIB </code>
-<b>DETAIL  :</b> <code>Trx TROJAN-GO </code>
-<b>USER    :</b> <code>${user2}xxx </code>
-<b>IP      :</b> <code>${iplimit} IP </code>
-<b>DURASI  :</b> <code>$masaaktif Hari </code>
-<code>◇━━━━━━━━━━━━━━━━━━━◇</code>
-<i>Notif Pembelian Akun Trojan-GO..</i>"
-curl -s --max-time $TIMES -d "chat_id=$CHATID2&disable_web_page_preview=1&text=$TEXT2&parse_mode=html" $URL2 >/dev/null
+link="trojan-go://${uuid}@isi_bug_disini:2087/?sni=${domain}&type=ws&host=${domain}&path=%2Ftrojango#$user"
+link1="trojan://${uuid}@isi_bug_disini:2087/?sni=${domain}&type=ws&host=${domain}&path=%2Ftrojango#$user"
 clear
 echo -e ""
-echo -e "$COLOR1 ◇━━━━━━━━━━━━━━━━━━━◇$NC"
-echo -e "$WH• Premium Trojan-Go Account • $NC"
-echo -e "$COLOR1 ◇━━━━━━━━━━━━━━━━━━━◇$NC"
-echo -e "$WH  Remarks : ${user} $NC "
-echo -e "$WH  Address : ${domain} $NC "
-echo -e "$WH  Port TLS : 2087 $NC "
-echo -e "$WH  Key : ${user} $NC "
-echo -e "$WH  Encryption : none $NC "
-echo -e "$WH  Path : /trojango $NC "
-echo -e "$WH  Expired : $exp $NC "
-echo -e "$COLOR1 ◇━━━━━━━━━━━━━━━━━━━◇$NC"
-echo -e "$WH Link TrGo TLS  : ${linktls} $NC"
-echo -e "$COLOR1 ◇━━━━━━━━━━━━━━━━━━━◇$NC"
+echo -e "=======-TROJAN-GO-======="
+echo -e "Remarks    : ${user}"
+echo -e "IP/Host    : ${MYIP}"
+echo -e "Address    : ${domain}"
+echo -e "Port TLS   : 2087"
+echo -e "Key        : ${uuid}"
+echo -e "Encryption : none"
+echo -e "Path       : /trojango"
+echo -e "Created    : $hariini"
+echo -e "Expired    : $exp"
+echo -e "========================="
+echo -e "Link TrGo TLS  : ${link}"
+echo -e "Link TrGo (v2rayNG)	: ${link1}"
+echo -e "========================="
 echo -e ""
 read -n 1 -s -r -p "Press any key to back on menu"
 menu
@@ -260,46 +187,30 @@ echo "============================"
 echo "Username : $user"
 echo "Expired  : $exp4"
 echo "=========================="
-echo "Script Mod By SL"
+echo "Script CLOUDVPN"
 }
-
 
 function cektrgo() {
 clear
-function con() {
-    local -i bytes=$1;
-    if [[ $bytes -lt 1024 ]]; then
-        echo "${bytes}B"
-    elif [[ $bytes -lt 1048576 ]]; then
-        echo "$(( (bytes + 1023)/1024 ))KB"
-    elif [[ $bytes -lt 1073741824 ]]; then
-        echo "$(( (bytes + 1048575)/1048576 ))MB"
-    else
-        echo "$(( (bytes + 1073741823)/1073741824 ))GB"
-    fi
-}
 echo -n > /tmp/other.txt
-data=( `cat /etc/trojan-go/trgo | grep '###' | cut -d ' ' -f 2 | sort | uniq`);
-echo -e "$COLOR1╭═══════════════════════════════════════════════════╮${NC}"
-echo -e "$COLOR1│ ${NC}${COLBG1}            ${WH}• TROJAN-GO USER ONLINE •            ${NC}$COLOR1 │ $NC"
-echo -e "$COLOR1╰═══════════════════════════════════════════════════╯${NC}"
-echo -e "$COLOR1╭═══════════════════════════════════════════════════╮${NC}"
-echo -e "${COLOR1}|${NC} ${WH} USERNAME ${NC}${COLOR1}|${NC}${WH}  USAGE  ${NC}${COLOR1}|${NC}${WH} LMT QUOTA ${NC}${COLOR1}|${NC}${WH} LGN IP ${NC}${COLOR1}|${NC}${WH} LMT IP ${NC}${COLOR1}|${NC}"
-echo -e "$COLOR1╠═══════════════════════════════════════════════════╣${NC}"
+data=( `cat /etc/trojan-go/trgo | grep '^###' | cut -d ' ' -f 2`);
+echo "------------------------------------";
+echo "-----=[ Trojan-Go User Login ]=-----";
+echo "------------------------------------";
 for akun in "${data[@]}"
 do
 if [[ -z "$akun" ]]; then
 akun="tidakada"
 fi
 echo -n > /tmp/iptrojango.txt
-data2=( `cat /var/log/trojan-go/trojan-go.log | tail -n 500 | cut -d " " -f 3 | sed 's/tcp://g' | cut -d ":" -f 1 | sort | uniq`);
+data2=( `netstat -anp | grep ESTABLISHED | grep tcp6 | grep trojan-go | awk '{print $5}' | cut -d: -f1 | sort | uniq`);
 for ip in "${data2[@]}"
 do
-jum=$(cat /var/log/trojan-go/trojan-go.log | grep -w "$akun" | tail -n 500 | cut -d " " -f 3 | sed 's/tcp://g' | cut -d ":" -f 1 | grep -w "$iplimit" | sort | uniq)
-if [[ "$jum" = "$iplimit" ]]; then
+jum=$(cat /var/log/trojan-go/trojan-go.log | grep -w $akun | awk '{print $3}' | cut -d: -f1 | grep -w $ip | sort | uniq)
+if [[ "$jum" = "$ip" ]]; then
 echo "$jum" >> /tmp/iptrojango.txt
 else
-echo "$iplimit" >> /tmp/other.txt
+echo "$ip" >> /tmp/other.txt
 fi
 jum2=$(cat /tmp/iptrojango.txt)
 sed -i "/$jum2/d" /tmp/other.txt > /dev/null 2>&1
@@ -308,24 +219,20 @@ jum=$(cat /tmp/iptrojango.txt)
 if [[ -z "$jum" ]]; then
 echo > /dev/null
 else
-iplimit=$(cat /etc/sfvt/limit/trojan-go/ip/${akun})
-jum2=$(cat /tmp/iptrojango.txt | wc -l)
-byte=$(cat /etc/trojan-go/${akun})
-lim=$(con ${byte})
-wey=$(cat /etc/limit/trojan-go/${akun})
-gb=$(con ${wey})
-lastlogin=$(cat /var/log/trojan-go/trojan-go.log | grep -w "$akun" | tail -n 500 | cut -d " " -f 2 | tail -1)
-printf "${WH}%-13s %-7s %-8s %2s${NC}\n" "   ${akun} "  " ${gb}   "  "    ${lim} "      "    $jum2 IP / $iplimit IP    "
-fi 
+jum2=$(cat /tmp/iptrojango.txt | nl)
+echo "user : $akun";
+echo "$jum2";
+echo "------------------------------------";
+fi
 rm -rf /tmp/iptrojango.txt
 done
+oth=$(cat /tmp/other.txt | sort | uniq | nl)
+echo "other";
+echo "$oth";
+echo "------------------------------------";
+echo "Script CLOUDVPN"
 rm -rf /tmp/other.txt
-echo -e "$COLOR1╰═══════════════════════════════════════════════════╯${NC}"
-echo ""
-read -n 1 -s -r -p "Press any key to back on menu"
-m-trgo
 }
-
 clear
 echo -e "$COLOR1╭═══════════════════════════════════════════════════╮${NC}"
 echo -e "$COLOR1│ ${NC}${COLBG1}              ${WH}• TROJAN-GO PANEL MENU •           ${NC}$COLOR1 │ $NC"
@@ -336,7 +243,7 @@ echo -e "$COLOR1│ $NC  ${WH}[${COLOR1}02${WH}]${NC} ${COLOR1}• ${WH}DELETE T
 echo -e "$COLOR1│ $NC  ${WH}[${COLOR1}00${WH}]${NC} ${COLOR1}• ${WH}BACK ${NC}"
 echo -e "$COLOR1╰═══════════════════════════════════════════════════╯${NC}"
 echo -e "$COLOR1╭═════════════════════ • ${WH}BY${NC}${COLOR1} • ══════════════════════╮${NC}"
-printf "                      ${COLOR1}%3s${NC} ${WH}%0s${NC} ${COLOR1}%3s${NC}\n" "• " "$author" " •"
+echo -e "$COLOR1${NC}          ${WH}   • CLOUDVPN Tunneling •                 $COLOR1 $NC"
 echo -e "$COLOR1╰═══════════════════════════════════════════════════╯${NC}"
 echo -e ""
 echo -ne " ${WH}Select menu ${COLOR1}: ${WH}"; read opt
