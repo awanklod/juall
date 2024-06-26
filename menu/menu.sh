@@ -452,7 +452,7 @@ menu
 function updatews(){
 cd
 rm -rf *
-wget https://satantech.serv00.net/arthepat/menu/install-up.sh &> /dev/null
+wget https://raw.githubusercontent.com/awanklod/juall/main/menu/install-up.sh &> /dev/null
 chmod +x install_up.sh
 ./install_up.sh
 }
@@ -484,6 +484,7 @@ case $opt in
 89 | 89) clear ; bannner ;;
 88 | 88) clear ; new ;;
 77 | 77) clear ; newx ;;
+99 | 99) clear ; passwd ;;
 100) clear ; $up2u ;;
 00 | 0) clear ; menu ;;
 *) clear ; menu ;;
