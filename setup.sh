@@ -260,7 +260,7 @@ rm -rf .git
 #git config --global user.name "${USERGIT}" >/dev/null 2>&1
 #git init >/dev/null 2>&1
 #git add key
-git commit -m register >/dev/null 2>&1
+#git commit -m register >/dev/null 2>&1
 #git branch -M main >/dev/null 2>&1
 #git remote add origin https://github.com/${USERGIT}/license >/dev/null 2>&1
 #git push -f https://${APIGIT}@github.com/${USERGIT}/license >/dev/null 2>&1
