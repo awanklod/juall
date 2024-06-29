@@ -430,7 +430,7 @@ res1() {
     systemctl restart openvpn
     systemctl restart cron
     systemctl restart netfilter-persistent
-    systemctl restart squid
+    #systemctl restart squid
     systemctl restart badvpn1
     systemctl restart badvpn2
     systemctl restart badvpn3
