@@ -78,8 +78,6 @@ elif [ ! -e /etc/trojan/listlock ]; then
 echo "" > /etc/trojan/listlock
 elif [ ! -e /etc/xray/noob ]; then
 echo "" > /etc/xray/noob
-elif [ ! -e /etc/trojan-go/trgo ]; then
-echo "" > /etc/trojan-go/trgo
 fi
 clear
 MODEL2=$(cat /etc/os-release | grep -w PRETTY_NAME | head -n1 | sed 's/=//g' | sed 's/"//g' | sed 's/PRETTY_NAME//g')
@@ -185,16 +183,6 @@ else
     systemctl start udp-custom
 fi
 
-stat_trgo=$( systemctl status trojan-go | grep Active | awk '{print $3}' | sed 's/(//g' | sed 's/)//g' )
-if [[ $stat_trgo == "running" ]]; then
-    stat_trgo="${COLOR1}ON${NC}"
-else
-    stat_trgo="${RED}OFF${NC}"
-    systemctl start trojan-go
-fi
-
-
-
 # STATUS EXPIRED ACTIVE
 Green_font_prefix="\033[32m" && Red_font_prefix="\033[31m" && Green_background_prefix="\033[42;37m" && Red_background_prefix="\033[4$below" && Font_color_suffix="\033[0m"
 Info="${Green_font_prefix}(Registered)${Font_color_suffix}"
@@ -216,21 +204,19 @@ trtls=$(grep -c -E "^#trg " "/etc/xray/config.json")
 total_ssh=$(grep -c -E "^### " "/etc/xray/ssh")
 # TOTAL CREATE ACC NOOBZ
 jumlah_noobz=$(grep -c -E "^### " "/etc/xray/noob")
-# TOTAL CREATE ACC TROJAN-GO
-jumlah_trgo=$(grep -c -E "^### " "/etc/trojan-go/trgo")
-function m-ip2(){
-clear
-cd
-if [[ -e /etc/github/api ]]; then
-m-ip
-else
-mkdir /etc/github
-echo "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" > /etc/github/api
-echo "vpnrmbl@gmail.com" > /etc/github/email
-echo "RMBL-VPN" > /etc/github/username
-m-ip
-fi
-}
+#function m-ip2(){
+#clear
+#cd
+#if [[ -e /etc/github/api ]]; then
+#m-ip
+#else
+#mkdir /etc/github
+#echo "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" > /etc/github/api
+#echo "vpnrmbl@gmail.com" > /etc/github/email
+#echo "RMBL-VPN" > /etc/github/username
+#m-ip
+#fi
+#}
 uphours=`uptime -p | awk '{print $2,$3}' | cut -d , -f1`
 upminutes=`uptime -p | awk '{print $4,$5}' | cut -d , -f1`
 uptimecek=`uptime -p | awk '{print $6,$7}' | cut -d , -f1`
@@ -320,7 +306,7 @@ echo -e " $COLOR1│$NC${WH} ❈ NSDomain      ${COLOR1}: ${WH}$(cat /etc/xray/d
 echo -e " $COLOR1╰══════════════════════════════════════════════════════════╯${NC}"
 echo -e "    $COLOR1╭═════════════════ • ${NC}${WH}STATUS SERVER${NC}${COLOR1} • ═══════════════╮${NC}"
 echo -e "     ${WH} SSH WS : ${status_ws} ${WH} XRAY : ${status_xray} ${WH} NGINX : ${status_nginx} ${WH} DROPBEAR : ${status_beruangjatuh}$NC"
-echo -e "      ${WH} UDP CUSTOM : ${status_udp} ${WH} NOOBZVPNS : ${stat_noobz} ${WH} TROJAN-GO : ${stat_trgo} ${NC}"
+echo -e "      ${WH} UDP CUSTOM : ${status_udp} ${WH} NOOBZVPNS : ${stat_noobz} ${NC}"
 echo -e "    $COLOR1╰═══════════════════════════════════════════════════╯${NC}"
 echo -e "        $COLOR1╭════════════════════════════════════════════╮${NC}"
 echo -e "                 $COLOR1$NC${WH}    LIST ACCOUNT PREMIUM ${NC}"
@@ -330,7 +316,7 @@ printf "                \033[1;37m%-16s ${COLOR1}%-4s${NC} ${WH}%-5s\e[0m\n" " V
 printf "                \033[1;37m%-16s ${COLOR1}%-4s${NC} ${WH}%-5s\e[0m\n" " VLESS/WS    =" "$vless" "ACCOUNT "
 printf "                \033[1;37m%-16s ${COLOR1}%-4s${NC} ${WH}%-5s\e[0m\n" " TROJAN/GRPC =" "$trtls" "ACCOUNT "
 printf "                \033[1;37m%-16s ${COLOR1}%-4s${NC} ${WH}%-5s\e[0m\n" " NOOBZVPNS   =" "$jumlah_noobz" "ACCOUNT "
-printf "                \033[1;37m%-16s ${COLOR1}%-4s${NC} ${WH}%-5s\e[0m\n" " TROJAN-GO   =" "$jumlah_trgo" "ACCOUNT "
+#printf "                \033[1;37m%-16s ${COLOR1}%-4s${NC} ${WH}%-5s\e[0m\n" " TROJAN-GO   =" "$jumlah_trgo" "ACCOUNT "
 echo -e "      $COLOR1╰═════════════════════════════════════════════╯${NC}"
 echo -e " $COLOR1╭═════════════════════ • ${WH}LIST MENU${NC}${COLOR1} • ════════════════════╮${NC}"
 echo -e " $COLOR1│$NC ${WH}[${COLOR1}01${WH}]${NC} ${COLOR1}• ${WH}SSH-WS    ${WH}[${COLOR1}Menu${WH}]   ${NC} $COLOR1│${NC}  ${WH}[${COLOR1}07${WH}]${NC} ${COLOR1}• ${WH}BOT PANEL  ${WH}[${COLOR1}Menu${WH}] $COLOR1│${NC}"
@@ -420,7 +406,6 @@ fun_bar() {
 }
 res1() {
     systemctl restart nginx
-    systemctl restart trojan-go
     systemctl restart xray
     systemctl restart noobzvpns
     systemctl restart daemon
@@ -470,7 +455,7 @@ case $opt in
 03 | 3) clear ; m-vless ;;
 04 | 4) clear ; m-trojan ;;
 05 | 5) clear ; m-noobz ;;
-06 | 6) clear ; m-trgo ;;
+#06 | 6) clear ; m-trgo ;;
 07 | 7) clear ; m-bot  ;;
 08 | 8) clear ; m-bot2 ;;
 09 | 9) clear ; m-update ;;
