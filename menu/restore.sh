@@ -65,8 +65,6 @@ cp -r sshx /etc/xray/ &> /dev/null
 cp -r vmess /etc/ &> /dev/null
 cp -r vless /etc/ &> /dev/null
 cp -r trojan /etc/ &> /dev/null
-cp -r trgo etc/ &> /dev/null
-cp -r trojan-go etc/ &> /dev/null
 cp -r noobz /etc &> /dev/null
 cp -r issue /etc/issue.net &> /dev/null
 echo ""
@@ -140,8 +138,6 @@ cp -r sshx /etc/xray/ &> /dev/null
 cp -r vmess /etc/ &> /dev/null
 cp -r vless /etc/ &> /dev/null
 cp -r trojan /etc/ &> /dev/null
-cp -r trgo etc/ &> /dev/null
-cp -r trojan-go etc/ &> /dev/null
 cp -r noobz /etc &> /dev/null
 cp -r issue /etc/issue.net &> /dev/null
 echo ""
@@ -216,8 +212,6 @@ cp -r sshx /etc/xray/ &> /dev/null
 cp -r vmess /etc/ &> /dev/null
 cp -r vless /etc/ &> /dev/null
 cp -r trojan /etc/ &> /dev/null
-cp -r trgo etc/ &> /dev/null
-cp -r trojan-go etc/ &> /dev/null
 cp -r noobz /etc &> /dev/null
 cp -r issue /etc/issue.net &> /dev/null
 echo ""
